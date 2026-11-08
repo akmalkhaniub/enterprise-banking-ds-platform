@@ -1,0 +1,32 @@
+name: UBL Banking Data Science & BI Quality Gate
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  test-and-verify-mart:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python 3.12
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -e ".[dev]"
+
+      - name: Execute Banking Data Science Pipeline & Export Power BI Mart
+        run: |
+          python -m src.pipeline_runner
+
+      - name: Run Pytest Verification Suite
+        run: |
+          pytest -v

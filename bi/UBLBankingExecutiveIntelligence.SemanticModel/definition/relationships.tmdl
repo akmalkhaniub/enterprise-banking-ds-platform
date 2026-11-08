@@ -1,0 +1,12 @@
+relationship Customer_Branch
+	fromColumn: DimCustomerSegment.branch_id
+	toColumn: DimBranchBenchmark.branch_id
+
+relationship Anomaly_Customer
+	fromColumn: FactTransactionAnomaly.customer_id
+	toColumn: DimCustomerSegment.customer_id
+
+relationship Anomaly_Branch
+	fromColumn: FactTransactionAnomaly.branch_id
+	toColumn: DimBranchBenchmark.branch_id
+	isActive: false

@@ -1,0 +1,101 @@
+table FactLiquidityForecast
+	lineageTag: 33333333-3333-4333-8333-333333333301
+
+	column date
+		dataType: string
+		isKey
+		lineageTag: 33333333-3333-4333-8333-333333333302
+		summarizeBy: none
+		sourceColumn: date
+
+	column period_type
+		dataType: string
+		lineageTag: 33333333-3333-4333-8333-333333333303
+		summarizeBy: none
+		sourceColumn: period_type
+
+	column actual_atm_cash_demand_pkr
+		dataType: double
+		formatString: "PKR #,0"
+		lineageTag: 33333333-3333-4333-8333-333333333304
+		summarizeBy: sum
+		sourceColumn: actual_atm_cash_demand_pkr
+
+	column forecast_atm_cash_demand_pkr
+		dataType: double
+		formatString: "PKR #,0"
+		lineageTag: 33333333-3333-4333-8333-333333333305
+		summarizeBy: sum
+		sourceColumn: forecast_atm_cash_demand_pkr
+
+	column forecast_atm_lower_95ci_pkr
+		dataType: double
+		formatString: "PKR #,0"
+		lineageTag: 33333333-3333-4333-8333-333333333306
+		summarizeBy: sum
+		sourceColumn: forecast_atm_lower_95ci_pkr
+
+	column forecast_atm_upper_95ci_pkr
+		dataType: double
+		formatString: "PKR #,0"
+		lineageTag: 33333333-3333-4333-8333-333333333307
+		summarizeBy: sum
+		sourceColumn: forecast_atm_upper_95ci_pkr
+
+	column forecast_deposit_inflow_pkr
+		dataType: double
+		formatString: "PKR #,0"
+		lineageTag: 33333333-3333-4333-8333-333333333308
+		summarizeBy: sum
+		sourceColumn: forecast_deposit_inflow_pkr
+
+	column is_salary_window
+		dataType: int64
+		lineageTag: 33333333-3333-4333-8333-333333333309
+		summarizeBy: sum
+		sourceColumn: is_salary_window
+
+	measure '30D Forward ATM Cash Forecast (PKR)' =
+			CALCULATE (
+			    SUM ( FactLiquidityForecast[forecast_atm_cash_demand_pkr] ),
+			    FactLiquidityForecast[period_type] = "FUTURE_FORECAST_30D"
+			)
+		formatString: "PKR #,0"
+		displayFolder: Treasury & ALCO Forecasting
+		lineageTag: 33333333-3333-4333-8333-333333333310
+
+	measure '30D Forward Deposit Inflow Forecast (PKR)' =
+			CALCULATE (
+			    SUM ( FactLiquidityForecast[forecast_deposit_inflow_pkr] ),
+			    FactLiquidityForecast[period_type] = "FUTURE_FORECAST_30D"
+			)
+		formatString: "PKR #,0"
+		displayFolder: Treasury & ALCO Forecasting
+		lineageTag: 33333333-3333-4333-8333-333333333311
+
+	measure 'Backtest Validation MAPE %' =
+			AVERAGEX (
+			    FILTER (
+			        FactLiquidityForecast,
+			        FactLiquidityForecast[period_type] = "VALIDATION_BACKTEST"
+			            && NOT ISBLANK ( FactLiquidityForecast[actual_atm_cash_demand_pkr] )
+			    ),
+			    DIVIDE (
+			        ABS ( FactLiquidityForecast[actual_atm_cash_demand_pkr] - FactLiquidityForecast[forecast_atm_cash_demand_pkr] ),
+			        FactLiquidityForecast[actual_atm_cash_demand_pkr]
+			    )
+			)
+		formatString: 0.00%
+		displayFolder: Treasury & ALCO Forecasting
+		lineageTag: 33333333-3333-4333-8333-333333333312
+
+	partition FactLiquidityForecast = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents("..\\..\\mart_exports\\FactLiquidityForecast.csv"),[Delimiter=",", Columns=10, Encoding=65001, QuoteStyle=QuoteStyle.None]),
+				    PromotedHeaders = Table.PromoteHeaders(Source, [PromoteAllScalars=true])
+				in
+				    PromotedHeaders
+
+	annotation PBI_ResultType = Table

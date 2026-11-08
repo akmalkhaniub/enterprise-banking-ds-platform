@@ -1,0 +1,9 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/pagesMetadata/1.0.0/schema.json",
+  "pageOrder": [
+    "page_treasury_forecast",
+    "page_branch_benchmark",
+    "page_customer_360_aml"
+  ],
+  "activePageName": "page_treasury_forecast"
+}

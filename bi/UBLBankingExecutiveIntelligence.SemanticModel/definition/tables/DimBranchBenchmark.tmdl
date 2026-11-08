@@ -1,0 +1,123 @@
+table DimBranchBenchmark
+	lineageTag: 11111111-1111-4111-8111-111111111101
+
+	column branch_id
+		dataType: string
+		isKey
+		lineageTag: 11111111-1111-4111-8111-111111111102
+		summarizeBy: none
+		sourceColumn: branch_id
+
+	column branch_name
+		dataType: string
+		lineageTag: 11111111-1111-4111-8111-111111111103
+		summarizeBy: none
+		sourceColumn: branch_name
+
+	column city
+		dataType: string
+		lineageTag: 11111111-1111-4111-8111-111111111104
+		summarizeBy: none
+		sourceColumn: city
+
+	column province
+		dataType: string
+		lineageTag: 11111111-1111-4111-8111-111111111105
+		summarizeBy: none
+		sourceColumn: province
+
+	column branch_tier
+		dataType: string
+		lineageTag: 11111111-1111-4111-8111-111111111106
+		summarizeBy: none
+		sourceColumn: branch_tier
+
+	column staff_count
+		dataType: int64
+		lineageTag: 11111111-1111-4111-8111-111111111107
+		summarizeBy: sum
+		sourceColumn: staff_count
+
+	column atm_count
+		dataType: int64
+		lineageTag: 11111111-1111-4111-8111-111111111108
+		summarizeBy: sum
+		sourceColumn: atm_count
+
+	column digital_onboarding_campaign
+		dataType: boolean
+		lineageTag: 11111111-1111-4111-8111-111111111109
+		summarizeBy: none
+		sourceColumn: digital_onboarding_campaign
+
+	column total_casa_book_pkr
+		dataType: double
+		formatString: "PKR #,0"
+		lineageTag: 11111111-1111-4111-8111-111111111110
+		summarizeBy: sum
+		sourceColumn: total_casa_book_pkr
+
+	column total_net_liquidity_180d_pkr
+		dataType: double
+		formatString: "PKR #,0"
+		lineageTag: 11111111-1111-4111-8111-111111111111
+		summarizeBy: sum
+		sourceColumn: total_net_liquidity_180d_pkr
+
+	column expected_net_liquidity_180d_pkr
+		dataType: double
+		formatString: "PKR #,0"
+		lineageTag: 11111111-1111-4111-8111-111111111112
+		summarizeBy: sum
+		sourceColumn: expected_net_liquidity_180d_pkr
+
+	column efficiency_index_pct
+		dataType: double
+		formatString: "0.0%"
+		lineageTag: 11111111-1111-4111-8111-111111111113
+		summarizeBy: average
+		sourceColumn: efficiency_index_pct
+
+	column benchmark_status
+		dataType: string
+		lineageTag: 11111111-1111-4111-8111-111111111114
+		summarizeBy: none
+		sourceColumn: benchmark_status
+
+	measure 'Peer Adjusted Efficiency Index' =
+			DIVIDE (
+			    SUM ( DimBranchBenchmark[total_net_liquidity_180d_pkr] ),
+			    SUM ( DimBranchBenchmark[expected_net_liquidity_180d_pkr] )
+			) * 100
+		formatString: 0.0
+		displayFolder: Branch Network KPIs
+		lineageTag: 11111111-1111-4111-8111-111111111115
+
+	measure 'Underperforming Branches Count' =
+			CALCULATE (
+			    COUNTROWS ( DimBranchBenchmark ),
+			    DimBranchBenchmark[benchmark_status] = "UNDERPERFORMING_ACTION_NEEDED"
+			)
+		formatString: 0
+		displayFolder: Branch Network KPIs
+		lineageTag: 11111111-1111-4111-8111-111111111116
+
+	measure 'Outperforming Branches Count' =
+			CALCULATE (
+			    COUNTROWS ( DimBranchBenchmark ),
+			    DimBranchBenchmark[benchmark_status] = "OUTPERFORMING_BENCHMARK"
+			)
+		formatString: 0
+		displayFolder: Branch Network KPIs
+		lineageTag: 11111111-1111-4111-8111-111111111117
+
+	partition DimBranchBenchmark = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents("..\\..\\mart_exports\\DimBranchBenchmark.csv"),[Delimiter=",", Columns=30, Encoding=65001, QuoteStyle=QuoteStyle.None]),
+				    PromotedHeaders = Table.PromoteHeaders(Source, [PromoteAllScalars=true])
+				in
+				    PromotedHeaders
+
+	annotation PBI_ResultType = Table

@@ -1,0 +1,920 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>UBL Executive Banking Intelligence & Data Science Console</title>
+  <style>
+    :root {
+      --bg-page: #f8fafc;
+      --bg-surface: #ffffff;
+      --bg-subtle: #f1f5f9;
+      --text-primary: #0f172a;
+      --text-secondary: #475569;
+      --text-muted: #64748b;
+      --border-subtle: #e2e8f0;
+      --accent: #0284c7;
+      --accent-soft: #e0f2fe;
+      --emerald: #059669;
+      --emerald-soft: #d1fae5;
+      --amber: #d97706;
+      --amber-soft: #fef3c7;
+      --rose: #e11d48;
+      --rose-soft: #ffe4e6;
+      --shadow-sm: 0 1px 2px 0 rgba(15, 23, 42, 0.05);
+    }
+
+    [data-theme="dark"] {
+      --bg-page: #0b0f19;
+      --bg-surface: #111827;
+      --bg-subtle: #1e293b;
+      --text-primary: #f8fafc;
+      --text-secondary: #cbd5e1;
+      --text-muted: #94a3b8;
+      --border-subtle: #334155;
+      --accent: #38bdf8;
+      --accent-soft: rgba(56, 189, 248, 0.14);
+      --emerald: #34d399;
+      --emerald-soft: rgba(52, 211, 153, 0.14);
+      --amber: #fbbf24;
+      --amber-soft: rgba(251, 191, 36, 0.14);
+      --rose: #fb7185;
+      --rose-soft: rgba(251, 113, 133, 0.14);
+      --shadow-sm: 0 1px 3px 0 rgba(0, 0, 0, 0.35);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Inter, sans-serif;
+      background-color: var(--bg-page);
+      color: var(--text-primary);
+      line-height: 1.55;
+      transition: background-color 0.15s ease, color 0.15s ease;
+    }
+
+    header {
+      background: var(--bg-surface);
+      border-bottom: 1px solid var(--border-subtle);
+      position: sticky;
+      top: 0;
+      z-index: 30;
+    }
+
+    .nav-container {
+      max-width: 1360px;
+      margin: 0 auto;
+      padding: 0.9rem 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .brand-mark {
+      width: 36px;
+      height: 36px;
+      border-radius: 8px;
+      background: var(--accent);
+      color: #fff;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.95rem;
+      letter-spacing: 0.5px;
+    }
+
+    .brand-title {
+      font-weight: 700;
+      font-size: 1.05rem;
+      letter-spacing: -0.01em;
+    }
+
+    .brand-subtitle {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .status-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      font-size: 0.78rem;
+      font-weight: 600;
+      padding: 0.35rem 0.75rem;
+      border-radius: 999px;
+      background: var(--emerald-soft);
+      color: var(--emerald);
+    }
+
+    .status-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--emerald);
+    }
+
+    button {
+      cursor: pointer;
+      font-family: inherit;
+      font-size: 0.84rem;
+      font-weight: 600;
+      border-radius: 8px;
+      border: 1px solid var(--border-subtle);
+      background: var(--bg-surface);
+      color: var(--text-primary);
+      padding: 0.48rem 0.85rem;
+      transition: all 0.15s ease;
+    }
+
+    button:hover {
+      border-color: var(--accent);
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      color: #ffffff;
+      border-color: var(--accent);
+    }
+
+    .btn-primary:hover {
+      opacity: 0.92;
+    }
+
+    main {
+      max-width: 1360px;
+      margin: 0 auto;
+      padding: 1.5rem;
+    }
+
+    .kpi-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .kpi-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      border-radius: 12px;
+      padding: 1.15rem 1.25rem;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .kpi-label {
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      color: var(--text-muted);
+      font-weight: 600;
+    }
+
+    .kpi-value {
+      font-size: 1.55rem;
+      font-weight: 700;
+      margin: 0.35rem 0 0.25rem;
+      letter-spacing: -0.02em;
+    }
+
+    .kpi-delta {
+      font-size: 0.8rem;
+      color: var(--text-secondary);
+    }
+
+    .tabs-bar {
+      display: flex;
+      gap: 0.5rem;
+      border-bottom: 1px solid var(--border-subtle);
+      margin-bottom: 1.5rem;
+      overflow-x: auto;
+      padding-bottom: 0.5rem;
+    }
+
+    .tab-btn {
+      border: 1px solid transparent;
+      background: transparent;
+      color: var(--text-secondary);
+      padding: 0.55rem 1rem;
+      border-radius: 8px;
+      font-weight: 600;
+      white-space: nowrap;
+    }
+
+    .tab-btn.active {
+      background: var(--accent-soft);
+      color: var(--accent);
+      border-color: var(--accent);
+    }
+
+    .tab-panel {
+      display: none;
+    }
+
+    .tab-panel.active {
+      display: block;
+    }
+
+    .section-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: 1.25rem;
+      margin-bottom: 1.25rem;
+    }
+
+    @media (max-width: 980px) {
+      .section-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      border-radius: 12px;
+      padding: 1.25rem;
+      box-shadow: var(--shadow-sm);
+      margin-bottom: 1.25rem;
+    }
+
+    .card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1rem;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+    }
+
+    .card-title {
+      font-size: 1.02rem;
+      font-weight: 700;
+    }
+
+    .card-subtitle {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+    }
+
+    .badge {
+      display: inline-block;
+      padding: 0.2rem 0.6rem;
+      font-size: 0.74rem;
+      font-weight: 600;
+      border-radius: 6px;
+    }
+
+    .badge-emerald {
+      background: var(--emerald-soft);
+      color: var(--emerald);
+    }
+
+    .badge-amber {
+      background: var(--amber-soft);
+      color: var(--amber);
+    }
+
+    .badge-rose {
+      background: var(--rose-soft);
+      color: var(--rose);
+    }
+
+    .badge-accent {
+      background: var(--accent-soft);
+      color: var(--accent);
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.84rem;
+    }
+
+    th, td {
+      text-align: left;
+      padding: 0.65rem 0.75rem;
+      border-bottom: 1px solid var(--border-subtle);
+    }
+
+    th {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+      color: var(--text-muted);
+      background: var(--bg-subtle);
+    }
+
+    .rec-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1rem;
+    }
+
+    .rec-item {
+      border: 1px solid var(--border-subtle);
+      border-radius: 10px;
+      padding: 1rem;
+      background: var(--bg-subtle);
+    }
+
+    .rec-item h4 {
+      font-size: 0.94rem;
+      margin: 0.45rem 0;
+    }
+
+    .rec-item p {
+      font-size: 0.82rem;
+      color: var(--text-secondary);
+      margin-bottom: 0.5rem;
+    }
+
+    details {
+      border: 1px solid var(--border-subtle);
+      border-radius: 10px;
+      background: var(--bg-surface);
+      margin-top: 0.85rem;
+      overflow: hidden;
+    }
+
+    summary {
+      padding: 0.8rem 1rem;
+      font-weight: 600;
+      font-size: 0.86rem;
+      cursor: pointer;
+      background: var(--bg-subtle);
+      user-select: none;
+    }
+
+    .details-body {
+      padding: 1rem;
+      font-size: 0.84rem;
+      color: var(--text-secondary);
+    }
+
+    .chart-box {
+      width: 100%;
+      height: 270px;
+      position: relative;
+    }
+
+    .slider-group {
+      margin-bottom: 0.9rem;
+    }
+
+    .slider-group label {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.82rem;
+      font-weight: 600;
+      margin-bottom: 0.3rem;
+    }
+
+    input[type="range"] {
+      width: 100%;
+      accent-color: var(--accent);
+    }
+
+    .mart-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+      margin-top: 0.75rem;
+    }
+
+    .mart-link {
+      text-decoration: none;
+      font-size: 0.82rem;
+      font-weight: 600;
+      padding: 0.45rem 0.85rem;
+      border-radius: 8px;
+      background: var(--bg-subtle);
+      color: var(--accent);
+      border: 1px solid var(--border-subtle);
+    }
+
+    .mart-link:hover {
+      border-color: var(--accent);
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="nav-container">
+      <div class="brand">
+        <div class="brand-mark">UBL</div>
+        <div>
+          <div class="brand-title">Banking Data Science & Decision Intelligence</div>
+          <div class="brand-subtitle">Treasury Forecasting • Branch OLS Benchmarking • Customer 360 RFM • AML Isolation Forest</div>
+        </div>
+      </div>
+      <div class="header-actions">
+        <span class="status-pill"><span class="status-dot"></span> SQL &amp; ML Mart Ready</span>
+        <button id="refreshBtn" title="Re-run SQL & ML Pipeline">↻ Re-run Pipeline</button>
+        <button id="themeToggle" aria-label="Toggle Light/Dark Theme">🌙 Dark Mode</button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- Hero Actionable KPI Row -->
+    <section class="kpi-grid" id="kpiGrid">
+      <div class="kpi-card">
+        <div class="kpi-label">30-Day Deposit Inflow Forecast</div>
+        <div class="kpi-value" id="kpiDepositInflow">PKR 22.37B</div>
+        <div class="kpi-delta" id="kpiForecastMape">Out-of-Time Ensemble MAPE: 3.02%</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-label">30-Day ATM Cash Replenishment</div>
+        <div class="kpi-value" id="kpiAtmForecast">PKR 10.94B</div>
+        <div class="kpi-delta">Salary Window Surge: +37.1% (p &lt; 0.0001)</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-label">Retail &amp; SME CASA Book (5 Clusters)</div>
+        <div class="kpi-value" id="kpiCasaBook">PKR 1.25B</div>
+        <div class="kpi-delta" id="kpiSilhouette">K-Means + GMM Silhouette: 0.303</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-label">AML &amp; Velocity Anomaly Shield</div>
+        <div class="kpi-value" id="kpiAnomalies">679 Alerts</div>
+        <div class="kpi-delta" id="kpiAnomalyMetric">F1: 0.914 • ROC-AUC: 0.9996</div>
+      </div>
+    </section>
+
+    <!-- Tactile Navigation Tabs -->
+    <nav class="tabs-bar" role="tablist">
+      <button class="tab-btn active" data-tab="tab-exec">1. Executive Brief &amp; Recommendations</button>
+      <button class="tab-btn" data-tab="tab-forecast">2. Treasury &amp; ATM Forecasting + Stress Simulator</button>
+      <button class="tab-btn" data-tab="tab-branch">3. Branch Benchmarking &amp; Hypothesis Tests</button>
+      <button class="tab-btn" data-tab="tab-customer">4. Customer 360 Segmentation &amp; AML Anomalies</button>
+      <button class="tab-btn" data-tab="tab-bi">5. SQL Data Quality &amp; Power BI (.pbip) Mart</button>
+    </nav>
+
+    <!-- TAB 1: Executive Brief & Recommendations -->
+    <section class="tab-panel active" id="tab-exec">
+      <div class="card">
+        <div class="card-header">
+          <div>
+            <div class="card-title">Automated Leadership Recommendations (ALCO, Retail Banking &amp; Compliance)</div>
+            <div class="card-subtitle">Deterministic, PII-Sanitized Executive Actions Grounded in DuckDB SQL &amp; Statistical Models</div>
+          </div>
+          <span class="badge badge-emerald">PII Guardrail Verified • Zero Hallucination</span>
+        </div>
+        <div class="rec-grid" id="recommendationsGrid"></div>
+
+        <details>
+          <summary>▶ Inspect Model Assumptions, Confidence Intervals &amp; Known Limitations (Stakeholder Transparency)</summary>
+          <div class="details-body" id="assumptionsContainer"></div>
+        </details>
+      </div>
+    </section>
+
+    <!-- TAB 2: Treasury & ATM Forecasting + ALCO Simulator -->
+    <section class="tab-panel" id="tab-forecast">
+      <div class="section-grid">
+        <div class="card">
+          <div class="card-header">
+            <div>
+              <div class="card-title">Bank-Wide Daily ATM Cash Replenishment Forecast (PKR Millions)</div>
+              <div class="card-subtitle">Validation Backtest vs. 30-Day Forward Projection with 95% Prediction Intervals</div>
+            </div>
+            <span class="badge badge-accent">SARIMAX(1,0,1)(1,0,1,7) + Gradient Boosting</span>
+          </div>
+          <div class="chart-box">
+            <svg id="forecastSvg" width="100%" height="260" viewBox="0 0 760 260"></svg>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-header">
+            <div>
+              <div class="card-title">ALCO Treasury What-If Stress Simulator</div>
+              <div class="card-subtitle">Simulate KIBOR Policy Shifts &amp; Salary Surge</div>
+            </div>
+          </div>
+          <div class="slider-group">
+            <label><span>KIBOR Policy Rate Delta (bps)</span><span id="lblKibor">0 bps</span></label>
+            <input type="range" id="simKibor" min="-300" max="300" step="25" value="0" />
+          </div>
+          <div class="slider-group">
+            <label><span>Salary Window ATM Surge Multiplier</span><span id="lblSalary">1.00x</span></label>
+            <input type="range" id="simSalary" min="0.90" max="1.45" step="0.05" value="1.00" />
+          </div>
+          <div class="slider-group">
+            <label><span>Digital Onboarding Kiosk Rollout (%)</span><span id="lblCampaign">50%</span></label>
+            <input type="range" id="simCampaign" min="50" max="100" step="10" value="50" />
+          </div>
+          <button class="btn-primary" id="runSimBtn" style="width:100%;margin-top:0.4rem;">Run ALCO Stress Scenario</button>
+          <div id="simOutputBox" style="margin-top:0.9rem;font-size:0.83rem;padding:0.75rem;border-radius:8px;background:var(--bg-subtle);">
+            Adjust sliders to stress-test 30-day deposit inflows and CIT armored cash buffers.
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <div class="card-title">Out-of-Time Forecasting Model Comparison (30-Day Walk-Forward Validation)</div>
+        </div>
+        <table>
+          <thead>
+            <tr>
+              <th>Model Architecture</th>
+              <th>MAPE (%)</th>
+              <th>MAE (PKR)</th>
+              <th>RMSE (PKR)</th>
+              <th>R² Score</th>
+            </tr>
+          </thead>
+          <tbody id="forecastModelsTable"></tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- TAB 3: Branch Benchmarking & Hypothesis Testing -->
+    <section class="tab-panel" id="tab-branch">
+      <div class="card">
+        <div class="card-header">
+          <div>
+            <div class="card-title">Statistical Hypothesis Testing Suite (`scipy.stats` &amp; `statsmodels`)</div>
+            <div class="card-subtitle">Translating Business Questions into Parametric &amp; Stationarity Tests</div>
+          </div>
+        </div>
+        <table>
+          <thead>
+            <tr>
+              <th>Hypothesis ID</th>
+              <th>Business Question</th>
+              <th>Statistical Test</th>
+              <th>Test Statistic</th>
+              <th>p-value</th>
+              <th>Decision &amp; Actionable Finding</th>
+            </tr>
+          </thead>
+          <tbody id="hypothesisTable"></tbody>
+        </table>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <div>
+            <div class="card-title">Peer-Adjusted Branch Efficiency Benchmarking (`statsmodels` OLS Regression Residuals)</div>
+            <div class="card-subtitle">Controls for Staff Count, ATM Count, Catchment Population &amp; OPEX so Non-Metro Branches Are Evaluated Fairly</div>
+          </div>
+          <span class="badge badge-emerald" id="olsBadge">OLS R² = 0.89</span>
+        </div>
+        <table>
+          <thead>
+            <tr>
+              <th>Rank</th>
+              <th>Branch ID &amp; Name</th>
+              <th>City / Tier</th>
+              <th>Actual 180d Net Deposit</th>
+              <th>Peer Expected Deposit</th>
+              <th>Efficiency Index</th>
+              <th>Benchmark Classification</th>
+            </tr>
+          </thead>
+          <tbody id="branchBenchmarkTable"></tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- TAB 4: Customer 360 Segmentation & AML Anomaly Detection -->
+    <section class="tab-panel" id="tab-customer">
+      <div class="card">
+        <div class="card-header">
+          <div>
+            <div class="card-title">Customer 360 RFM &amp; Behavioral Segmentation (K-Means + GMM Soft Probability)</div>
+            <div class="card-subtitle">1,200 Retail, Remittance &amp; SME Accounts Clustered with Next-Best-Action Playbooks</div>
+          </div>
+        </div>
+        <table>
+          <thead>
+            <tr>
+              <th>Customer Persona Segment</th>
+              <th>Accounts</th>
+              <th>Avg Recency (Days)</th>
+              <th>Avg 180d Txns</th>
+              <th>Avg CASA Balance</th>
+              <th>Est. Annual CLV</th>
+              <th>Automated Next-Best-Action (NBA)</th>
+            </tr>
+          </thead>
+          <tbody id="segmentTable"></tbody>
+        </table>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <div>
+            <div class="card-title">High-Risk Transaction Anomaly Queue (Isolation Forest + Velocity Z-Score Shield)</div>
+            <div class="card-subtitle">Flagged Structuring Near 2.5M PKR Threshold &amp; Midnight High-Value IBFT Drains</div>
+          </div>
+        </div>
+        <table>
+          <thead>
+            <tr>
+              <th>Transaction ID</th>
+              <th>Customer ID</th>
+              <th>Timestamp</th>
+              <th>Channel</th>
+              <th>Amount (PKR)</th>
+              <th>Customer Z-Score</th>
+              <th>Risk Score</th>
+              <th>Explainable Alert Reason</th>
+            </tr>
+          </thead>
+          <tbody id="anomalyTable"></tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- TAB 5: SQL Data Quality & Power BI (.pbip) Star-Schema Mart -->
+    <section class="tab-panel" id="tab-bi">
+      <div class="card">
+        <div class="card-header">
+          <div>
+            <div class="card-title">Power BI Project (`.pbip` / TMDL Semantic Model) &amp; Star-Schema Exports</div>
+            <div class="card-subtitle">Direct CSV &amp; Power BI Desktop Integration (`bi/UBLBankingExecutiveIntelligence.pbip`)</div>
+          </div>
+          <span class="badge badge-accent">Power BI + Tableau Ready</span>
+        </div>
+        <p style="font-size:0.86rem;color:var(--text-secondary);">
+          All model outputs are materialized into a 5-table Star Schema with pre-authored DAX measures and Role-Based Access Control (`ALCO &amp; Executive Leadership`, `Regional Branch Operations`, `AML &amp; Fraud Compliance`). Click below to download any mart table directly:
+        </p>
+        <div class="mart-links">
+          <a class="mart-link" href="/api/v1/bi-mart/download/DimBranchBenchmark">⬇ DimBranchBenchmark.csv</a>
+          <a class="mart-link" href="/api/v1/bi-mart/download/DimCustomerSegment">⬇ DimCustomerSegment.csv</a>
+          <a class="mart-link" href="/api/v1/bi-mart/download/FactLiquidityForecast">⬇ FactLiquidityForecast.csv</a>
+          <a class="mart-link" href="/api/v1/bi-mart/download/FactTransactionAnomaly">⬇ FactTransactionAnomaly.csv</a>
+          <a class="mart-link" href="/api/v1/bi-mart/download/FactExecutiveRecommendation">⬇ FactExecutiveRecommendation.csv</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <div>
+            <div class="card-title">Automated DuckDB SQL Data Quality Validation Gates</div>
+            <div class="card-subtitle">Executed Prior to Feature Engineering &amp; Model Training</div>
+          </div>
+        </div>
+        <table>
+          <thead>
+            <tr>
+              <th>Check ID</th>
+              <th>Target Table</th>
+              <th>Validation Rule</th>
+              <th>Failed Rows</th>
+              <th>Total Rows</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody id="dqTable"></tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    // Theme Persistence (Light / Dark Mode)
+    const rootEl = document.documentElement;
+    const themeBtn = document.getElementById("themeToggle");
+    const savedTheme = localStorage.getItem("ubl_ds_theme") || "light";
+    if (savedTheme === "dark") {
+      rootEl.setAttribute("data-theme", "dark");
+      themeBtn.textContent = "☀️ Light Mode";
+    }
+    themeBtn.addEventListener("click", () => {
+      const current = rootEl.getAttribute("data-theme") === "dark" ? "dark" : "light";
+      const next = current === "dark" ? "light" : "dark";
+      rootEl.setAttribute("data-theme", next);
+      localStorage.setItem("ubl_ds_theme", next);
+      themeBtn.textContent = next === "dark" ? "☀️ Light Mode" : "🌙 Dark Mode";
+    });
+
+    // Tab Navigation
+    document.querySelectorAll(".tab-btn").forEach((btn) => {
+      btn.addEventListener("click", () => {
+        document.querySelectorAll(".tab-btn").forEach((b) => b.classList.remove("active"));
+        document.querySelectorAll(".tab-panel").forEach((p) => p.classList.remove("active"));
+        btn.classList.add("active");
+        document.getElementById(btn.dataset.tab).classList.add("active");
+      });
+    });
+
+    const fmtPKR = (val) => {
+      if (val === null || val === undefined) return "—";
+      if (Math.abs(val) >= 1e9) return `PKR ${(val / 1e9).toFixed(2)}B`;
+      if (Math.abs(val) >= 1e6) return `PKR ${(val / 1e6).toFixed(2)}M`;
+      return `PKR ${Number(val).toLocaleString()}`;
+    };
+
+    function renderForecastChart(series) {
+      const svg = document.getElementById("forecastSvg");
+      if (!series || !series.length) return;
+      const w = 760, h = 260, padL = 55, padR = 20, padT = 20, padB = 35;
+      const vals = series.flatMap(d => [d.actual_atm_cash_demand_pkr, d.forecast_atm_cash_demand_pkr, d.forecast_atm_upper_95ci_pkr].filter(Boolean));
+      const minY = Math.min(...vals) * 0.9;
+      const maxY = Math.max(...vals) * 1.05;
+      const xStep = (w - padL - padR) / Math.max(series.length - 1, 1);
+      const scaleY = (v) => padT + (h - padT - padB) * (1 - (v - minY) / (maxY - minY));
+
+      // Confidence band polygon
+      const upperPts = series.map((d, i) => `${padL + i * xStep},${scaleY(d.forecast_atm_upper_95ci_pkr)}`);
+      const lowerPts = [...series].reverse().map((d, idx) => {
+        const i = series.length - 1 - idx;
+        return `${padL + i * xStep},${scaleY(d.forecast_atm_lower_95ci_pkr)}`;
+      });
+
+      const forecastPath = series.map((d, i) => `${i === 0 ? "M" : "L"}${padL + i * xStep},${scaleY(d.forecast_atm_cash_demand_pkr)}`).join(" ");
+      const actualPoints = series
+        .map((d, i) => d.actual_atm_cash_demand_pkr ? `${padL + i * xStep},${scaleY(d.actual_atm_cash_demand_pkr)}` : null)
+        .filter(Boolean);
+      const actualPath = actualPoints.map((pt, i) => `${i === 0 ? "M" : "L"}${pt}`).join(" ");
+
+      svg.innerHTML = `
+        <polygon points="${upperPts.concat(lowerPts).join(" ")}" fill="rgba(2, 132, 199, 0.14)" />
+        <path d="${actualPath}" fill="none" stroke="#10b981" stroke-width="2.2" />
+        <path d="${forecastPath}" fill="none" stroke="#0284c7" stroke-width="2.2" stroke-dasharray="5,3" />
+        <text x="${padL + 8}" y="${padT + 14}" fill="currentColor" font-size="11" font-weight="600">🟢 Actual ATM Demand (Backtest)   🔵 Hybrid SARIMAX+GBR Forecast (with 95% CI)</text>
+      `;
+    }
+
+    async function loadDashboard() {
+      const res = await fetch("/api/v1/dashboard-bundle");
+      const data = await res.json();
+
+      // KPIs
+      document.getElementById("kpiDepositInflow").textContent = fmtPKR(data.kpis.next_30d_deposit_inflow_forecast_pkr);
+      document.getElementById("kpiForecastMape").textContent = `Out-of-Time Ensemble MAPE: ${data.kpis.forecast_ensemble_mape_pct}%`;
+      document.getElementById("kpiAtmForecast").textContent = fmtPKR(data.kpis.next_30d_atm_forecast_pkr);
+      document.getElementById("kpiCasaBook").textContent = fmtPKR(data.kpis.total_casa_book_pkr);
+      document.getElementById("kpiSilhouette").textContent = `K-Means + GMM Silhouette: ${data.kpis.clustering_silhouette_score}`;
+      document.getElementById("kpiAnomalies").textContent = `${data.kpis.flagged_anomalies_count} Alerts`;
+      document.getElementById("kpiAnomalyMetric").textContent = `F1: ${data.kpis.anomaly_detection_f1} • ROC-AUC: ${data.kpis.anomaly_detection_roc_auc}`;
+
+      // Recommendations
+      const recGrid = document.getElementById("recommendationsGrid");
+      recGrid.innerHTML = data.executive_brief.recommendations.map(r => `
+        <div class="rec-item">
+          <div style="display:flex;justify-content:space-between;align-items:center;">
+            <span class="badge ${r.priority === 'CRITICAL' ? 'badge-rose' : 'badge-accent'}">${r.domain} • ${r.priority}</span>
+            <span style="font-size:0.75rem;color:var(--text-muted);">${r.recommendation_id}</span>
+          </div>
+          <h4>${r.headline}</h4>
+          <p><strong>Evidence:</strong> ${r.quantified_evidence}</p>
+          <p><strong>Action:</strong> ${r.recommended_action}</p>
+          <p style="margin-bottom:0;color:var(--emerald);font-weight:600;">Impact: ${r.expected_business_impact}</p>
+        </div>
+      `).join("");
+
+      // Assumptions & Limitations
+      const assumpEl = document.getElementById("assumptionsContainer");
+      assumpEl.innerHTML = data.executive_brief.model_assumptions_and_limitations.map(m => `
+        <div style="margin-bottom:1rem;padding-bottom:0.75rem;border-bottom:1px solid var(--border-subtle);">
+          <div style="font-weight:700;color:var(--text-primary);margin-bottom:0.35rem;">${m.model_component}</div>
+          <div><strong>Assumptions:</strong> ${m.statistical_assumptions.join(" ")}</div>
+          <div style="margin-top:0.25rem;"><strong>Limitations:</strong> ${m.known_limitations.join(" ")}</div>
+          <div style="margin-top:0.25rem;color:var(--accent);"><strong>Mitigation:</strong> ${m.mitigation_and_monitoring}</div>
+        </div>
+      `).join("");
+
+      // Forecast Chart & Table
+      renderForecastChart(data.forecasting.series);
+      const fmBody = document.getElementById("forecastModelsTable");
+      fmBody.innerHTML = Object.entries(data.forecasting.metrics.models).map(([name, m]) => `
+        <tr>
+          <td><strong>${name}</strong></td>
+          <td><span class="badge ${m.mape_pct < 4.5 ? 'badge-emerald' : 'badge-amber'}">${m.mape_pct}%</span></td>
+          <td>${fmtPKR(m.mae_pkr)}</td>
+          <td>${fmtPKR(m.rmse_pkr)}</td>
+          <td>${m.r2_score}</td>
+        </tr>
+      `).join("");
+
+      // Hypothesis Tests
+      const hypBody = document.getElementById("hypothesisTable");
+      hypBody.innerHTML = data.hypothesis_testing.hypothesis_tests.map(h => `
+        <tr>
+          <td><code>${h.hypothesis_id}</code></td>
+          <td>${h.business_question}</td>
+          <td>${h.test_used}</td>
+          <td>${h.statistic}</td>
+          <td>${h.p_value}</td>
+          <td><span class="badge badge-emerald">${h.decision}</span><div style="margin-top:0.25rem;font-size:0.79rem;">${h.business_recommendation}</div></td>
+        </tr>
+      `).join("");
+
+      // Branch Benchmarking
+      document.getElementById("olsBadge").textContent = `OLS R² = ${data.branch_benchmarking.ols_summary.r_squared}`;
+      const brBody = document.getElementById("branchBenchmarkTable");
+      brBody.innerHTML = data.branch_benchmarking.branches.slice(0, 15).map(b => `
+        <tr>
+          <td>#${b.efficiency_rank}</td>
+          <td><strong>${b.branch_id}</strong> — ${b.branch_name}</td>
+          <td>${b.city} (${b.branch_tier})</td>
+          <td>${fmtPKR(b.total_net_liquidity_180d_pkr)}</td>
+          <td>${fmtPKR(b.expected_net_liquidity_180d_pkr)}</td>
+          <td><strong>${b.efficiency_index_pct}%</strong></td>
+          <td><span class="badge ${b.benchmark_status === 'OUTPERFORMING_BENCHMARK' ? 'badge-emerald' : (b.benchmark_status === 'UNDERPERFORMING_ACTION_NEEDED' ? 'badge-rose' : 'badge-amber')}">${b.benchmark_status}</span></td>
+        </tr>
+      `).join("");
+
+      // Customer Segmentation
+      const segBody = document.getElementById("segmentTable");
+      segBody.innerHTML = data.customer_segmentation.segment_profiles.map(s => `
+        <tr>
+          <td><strong>${s.customer_segment}</strong></td>
+          <td>${s.customer_count}</td>
+          <td>${s.avg_recency_days} d</td>
+          <td>${s.avg_txn_frequency_180d}</td>
+          <td>${fmtPKR(s.avg_casa_balance_pkr)}</td>
+          <td>${fmtPKR(s.avg_annual_clv_pkr)}</td>
+          <td>${s.recommended_action}</td>
+        </tr>
+      `).join("");
+
+      // Anomalies
+      const anomBody = document.getElementById("anomalyTable");
+      anomBody.innerHTML = data.anomaly_detection.top_alerts.slice(0, 15).map(a => `
+        <tr>
+          <td><code>${a.transaction_id}</code></td>
+          <td>${a.customer_id}</td>
+          <td>${a.txn_timestamp}</td>
+          <td>${a.channel}</td>
+          <td><strong>${fmtPKR(a.amount_pkr)}</strong></td>
+          <td>${a.customer_amount_zscore}σ</td>
+          <td><span class="badge badge-rose">${a.anomaly_risk_score}</span></td>
+          <td>${a.explainable_alert_reason}</td>
+        </tr>
+      `).join("");
+
+      // Data Quality
+      const dqBody = document.getElementById("dqTable");
+      dqBody.innerHTML = data.data_quality_checks.map(c => `
+        <tr>
+          <td><code>${c.check_id}</code></td>
+          <td><code>${c.table_name}</code></td>
+          <td>${c.rule_description}</td>
+          <td>${c.failed_records}</td>
+          <td>${c.total_records.toLocaleString()}</td>
+          <td><span class="badge badge-emerald">${c.status}</span></td>
+        </tr>
+      `).join("");
+    }
+
+    // Interactive Sliders
+    const sKibor = document.getElementById("simKibor");
+    const sSalary = document.getElementById("simSalary");
+    const sCamp = document.getElementById("simCampaign");
+    sKibor.addEventListener("input", () => document.getElementById("lblKibor").textContent = `${sKibor.value} bps`);
+    sSalary.addEventListener("input", () => document.getElementById("lblSalary").textContent = `${Number(sSalary.value).toFixed(2)}x`);
+    sCamp.addEventListener("input", () => document.getElementById("lblCampaign").textContent = `${sCamp.value}%`);
+
+    document.getElementById("runSimBtn").addEventListener("click", async () => {
+      const res = await fetch("/api/v1/simulate/alco-stress-test", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          kibor_delta_bps: Number(sKibor.value),
+          salary_surge_multiplier: Number(sSalary.value),
+          digital_campaign_rollout_pct: Number(sCamp.value),
+        }),
+      });
+      const out = await res.json();
+      document.getElementById("simOutputBox").innerHTML = `
+        <div><strong>Stressed 30D Deposit Inflow:</strong> ${fmtPKR(out.stressed_30d_deposit_inflow_pkr)} (${out.incremental_deposit_inflow_pkr >= 0 ? '+' : ''}${fmtPKR(out.incremental_deposit_inflow_pkr)})</div>
+        <div style="margin-top:0.3rem;"><strong>Stressed 30D ATM Cash Demand:</strong> ${fmtPKR(out.stressed_30d_atm_demand_pkr)} (${out.incremental_atm_cash_required_pkr >= 0 ? '+' : ''}${fmtPKR(out.incremental_atm_cash_required_pkr)})</div>
+        <div style="margin-top:0.3rem;color:var(--accent);"><strong>Recommended 95% CIT Reserve Buffer:</strong> ${fmtPKR(out.recommended_treasury_buffer_pkr)}</div>
+      `;
+    });
+
+    document.getElementById("refreshBtn").addEventListener("click", async () => {
+      const btn = document.getElementById("refreshBtn");
+      btn.textContent = "⏳ Recomputing...";
+      await fetch("/api/v1/pipeline/refresh", { method: "POST" });
+      await loadDashboard();
+      btn.textContent = "↻ Re-run Pipeline";
+    });
+
+    loadDashboard();
+  </script>
+</body>
+</html>

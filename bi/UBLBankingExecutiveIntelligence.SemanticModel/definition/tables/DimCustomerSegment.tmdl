@@ -1,0 +1,96 @@
+table DimCustomerSegment
+	lineageTag: 22222222-2222-4222-8222-222222222201
+
+	column customer_id
+		dataType: string
+		isKey
+		lineageTag: 22222222-2222-4222-8222-222222222202
+		summarizeBy: none
+		sourceColumn: customer_id
+
+	column branch_id
+		dataType: string
+		lineageTag: 22222222-2222-4222-8222-222222222203
+		summarizeBy: none
+		sourceColumn: branch_id
+
+	column account_type
+		dataType: string
+		lineageTag: 22222222-2222-4222-8222-222222222204
+		summarizeBy: none
+		sourceColumn: account_type
+
+	column customer_segment
+		dataType: string
+		lineageTag: 22222222-2222-4222-8222-222222222205
+		summarizeBy: none
+		sourceColumn: customer_segment
+
+	column recency_days
+		dataType: int64
+		lineageTag: 22222222-2222-4222-8222-222222222206
+		summarizeBy: average
+		sourceColumn: recency_days
+
+	column txn_frequency_180d
+		dataType: int64
+		lineageTag: 22222222-2222-4222-8222-222222222207
+		summarizeBy: sum
+		sourceColumn: txn_frequency_180d
+
+	column monetary_total_volume_pkr
+		dataType: double
+		formatString: "PKR #,0"
+		lineageTag: 22222222-2222-4222-8222-222222222208
+		summarizeBy: sum
+		sourceColumn: monetary_total_volume_pkr
+
+	column current_casa_balance_pkr
+		dataType: double
+		formatString: "PKR #,0"
+		lineageTag: 22222222-2222-4222-8222-222222222209
+		summarizeBy: sum
+		sourceColumn: current_casa_balance_pkr
+
+	column estimated_annual_clv_pkr
+		dataType: double
+		formatString: "PKR #,0"
+		lineageTag: 22222222-2222-4222-8222-222222222210
+		summarizeBy: sum
+		sourceColumn: estimated_annual_clv_pkr
+
+	column recommended_next_best_action
+		dataType: string
+		lineageTag: 22222222-2222-4222-8222-222222222211
+		summarizeBy: none
+		sourceColumn: recommended_next_best_action
+
+	measure 'Total CASA Portfolio (PKR)' = SUM ( DimCustomerSegment[current_casa_balance_pkr] )
+		formatString: "PKR #,0"
+		displayFolder: Customer 360 & RFM
+		lineageTag: 22222222-2222-4222-8222-222222222212
+
+	measure 'Dormant Churn Risk Accounts' =
+			CALCULATE (
+			    COUNTROWS ( DimCustomerSegment ),
+			    DimCustomerSegment[customer_segment] = "Dormant_Churn_Risk"
+			)
+		formatString: 0
+		displayFolder: Customer 360 & RFM
+		lineageTag: 22222222-2222-4222-8222-222222222213
+
+	measure 'Portfolio Annualized CLV (PKR)' = SUM ( DimCustomerSegment[estimated_annual_clv_pkr] )
+		formatString: "PKR #,0"
+		displayFolder: Customer 360 & RFM
+		lineageTag: 22222222-2222-4222-8222-222222222214
+
+	partition DimCustomerSegment = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents("..\\..\\mart_exports\\DimCustomerSegment.csv"),[Delimiter=",", Columns=27, Encoding=65001, QuoteStyle=QuoteStyle.Csv]),
+				    PromotedHeaders = Table.PromoteHeaders(Source, [PromoteAllScalars=true])
+				in
+				    PromotedHeaders
+
+	annotation PBI_ResultType = Table

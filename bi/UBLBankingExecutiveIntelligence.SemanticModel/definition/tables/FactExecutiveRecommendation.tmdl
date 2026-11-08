@@ -1,0 +1,56 @@
+table FactExecutiveRecommendation
+	lineageTag: 55555555-5555-4555-8555-555555555501
+
+	column recommendation_id
+		dataType: string
+		isKey
+		lineageTag: 55555555-5555-4555-8555-555555555502
+		summarizeBy: none
+		sourceColumn: recommendation_id
+
+	column domain
+		dataType: string
+		lineageTag: 55555555-5555-4555-8555-555555555503
+		summarizeBy: none
+		sourceColumn: domain
+
+	column priority
+		dataType: string
+		lineageTag: 55555555-5555-4555-8555-555555555504
+		summarizeBy: none
+		sourceColumn: priority
+
+	column headline
+		dataType: string
+		lineageTag: 55555555-5555-4555-8555-555555555505
+		summarizeBy: none
+		sourceColumn: headline
+
+	column quantified_evidence
+		dataType: string
+		lineageTag: 55555555-5555-4555-8555-555555555506
+		summarizeBy: none
+		sourceColumn: quantified_evidence
+
+	column recommended_action
+		dataType: string
+		lineageTag: 55555555-5555-4555-8555-555555555507
+		summarizeBy: none
+		sourceColumn: recommended_action
+
+	column expected_business_impact
+		dataType: string
+		lineageTag: 55555555-5555-4555-8555-555555555508
+		summarizeBy: none
+		sourceColumn: expected_business_impact
+
+	partition FactExecutiveRecommendation = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents("..\\..\\mart_exports\\FactExecutiveRecommendation.csv"),[Delimiter=",", Columns=7, Encoding=65001, QuoteStyle=QuoteStyle.Csv]),
+				    PromotedHeaders = Table.PromoteHeaders(Source, [PromoteAllScalars=true])
+				in
+				    PromotedHeaders
+
+	annotation PBI_ResultType = Table

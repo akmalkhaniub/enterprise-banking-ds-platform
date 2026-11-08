@@ -1,0 +1,31 @@
+model Model
+	culture: en-US
+	defaultPowerBIDataSourceVersion: powerBI_V3
+	sourceQueryCulture: en-US
+	dataAccessOptions
+		legacyRedirects
+		returnErrorValuesAsNull
+
+ref table DimBranchBenchmark
+ref table DimCustomerSegment
+ref table FactLiquidityForecast
+ref table FactTransactionAnomaly
+ref table FactExecutiveRecommendation
+
+ref role 'ALCO & Executive Leadership'
+ref role 'Regional Branch Operations'
+ref role 'AML & Fraud Compliance'
+
+annotation PBI_QueryOrder = ["DimBranchBenchmark","DimCustomerSegment","FactLiquidityForecast","FactTransactionAnomaly","FactExecutiveRecommendation"]
+
+role 'ALCO & Executive Leadership'
+	modelPermission: read
+
+role 'Regional Branch Operations'
+	modelPermission: read
+
+	tablePermission FactTransactionAnomaly =
+			FactTransactionAnomaly[anomaly_risk_score] >= 80
+
+role 'AML & Fraud Compliance'
+	modelPermission: read

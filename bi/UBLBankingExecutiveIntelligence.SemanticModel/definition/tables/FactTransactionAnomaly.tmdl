@@ -1,0 +1,90 @@
+table FactTransactionAnomaly
+	lineageTag: 44444444-4444-4444-8444-444444444401
+
+	column transaction_id
+		dataType: string
+		isKey
+		lineageTag: 44444444-4444-4444-8444-444444444402
+		summarizeBy: none
+		sourceColumn: transaction_id
+
+	column customer_id
+		dataType: string
+		lineageTag: 44444444-4444-4444-8444-444444444403
+		summarizeBy: none
+		sourceColumn: customer_id
+
+	column branch_id
+		dataType: string
+		lineageTag: 44444444-4444-4444-8444-444444444404
+		summarizeBy: none
+		sourceColumn: branch_id
+
+	column txn_timestamp
+		dataType: string
+		lineageTag: 44444444-4444-4444-8444-444444444405
+		summarizeBy: none
+		sourceColumn: txn_timestamp
+
+	column channel
+		dataType: string
+		lineageTag: 44444444-4444-4444-8444-444444444406
+		summarizeBy: none
+		sourceColumn: channel
+
+	column amount_pkr
+		dataType: double
+		formatString: "PKR #,0"
+		lineageTag: 44444444-4444-4444-8444-444444444407
+		summarizeBy: sum
+		sourceColumn: amount_pkr
+
+	column customer_amount_zscore
+		dataType: double
+		formatString: "0.00"
+		lineageTag: 44444444-4444-4444-8444-444444444408
+		summarizeBy: average
+		sourceColumn: customer_amount_zscore
+
+	column anomaly_risk_score
+		dataType: double
+		formatString: "0.0"
+		lineageTag: 44444444-4444-4444-8444-444444444409
+		summarizeBy: average
+		sourceColumn: anomaly_risk_score
+
+	column explainable_alert_reason
+		dataType: string
+		lineageTag: 44444444-4444-4444-8444-444444444410
+		summarizeBy: none
+		sourceColumn: explainable_alert_reason
+
+	measure 'Flagged AML & Fraud Alerts' = COUNTROWS ( FactTransactionAnomaly )
+		formatString: "#,0"
+		displayFolder: AML & Fraud Shield
+		lineageTag: 44444444-4444-4444-8444-444444444411
+
+	measure 'Exposed Anomaly Volume (PKR)' = SUM ( FactTransactionAnomaly[amount_pkr] )
+		formatString: "PKR #,0"
+		displayFolder: AML & Fraud Shield
+		lineageTag: 44444444-4444-4444-8444-444444444412
+
+	measure 'Critical Structuring Alerts' =
+			CALCULATE (
+			    COUNTROWS ( FactTransactionAnomaly ),
+			    FactTransactionAnomaly[explainable_alert_reason] = "AML_STRUCTURING_NEAR_2.5M_THRESHOLD"
+			)
+		formatString: "#,0"
+		displayFolder: AML & Fraud Shield
+		lineageTag: 44444444-4444-4444-8444-444444444413
+
+	partition FactTransactionAnomaly = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents("..\\..\\mart_exports\\FactTransactionAnomaly.csv"),[Delimiter=",", Columns=25, Encoding=65001, QuoteStyle=QuoteStyle.None]),
+				    PromotedHeaders = Table.PromoteHeaders(Source, [PromoteAllScalars=true])
+				in
+				    PromotedHeaders
+
+	annotation PBI_ResultType = Table
