@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Enterprise Banking Intelligence & Data Science Console</title>
+  <title>Enterprise Multi-Domain Data Science & Decision Intelligence Console</title>
   <style>
     :root {
       --bg-page: #f8fafc;
@@ -83,8 +83,8 @@
     }
 
     .brand-mark {
-      width: 36px;
-      height: 36px;
+      width: 38px;
+      height: 38px;
       border-radius: 8px;
       background: var(--accent);
       color: #fff;
@@ -92,7 +92,7 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 0.95rem;
+      font-size: 0.92rem;
       letter-spacing: 0.5px;
     }
 
@@ -110,7 +110,20 @@
     .header-actions {
       display: flex;
       align-items: center;
-      gap: 0.75rem;
+      gap: 0.65rem;
+      flex-wrap: wrap;
+    }
+
+    .domain-select {
+      font-family: inherit;
+      font-size: 0.84rem;
+      font-weight: 600;
+      border-radius: 8px;
+      border: 1.5px solid var(--accent);
+      background: var(--accent-soft);
+      color: var(--text-primary);
+      padding: 0.45rem 0.75rem;
+      cursor: pointer;
     }
 
     .status-pill {
@@ -163,6 +176,21 @@
       max-width: 1360px;
       margin: 0 auto;
       padding: 1.5rem;
+    }
+
+    .domain-banner {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      border-left: 4px solid var(--accent);
+      border-radius: 10px;
+      padding: 0.85rem 1.15rem;
+      margin-bottom: 1.25rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      font-size: 0.84rem;
     }
 
     .kpi-grid {
@@ -421,11 +449,18 @@
       <div class="brand">
         <div class="brand-mark">EBI</div>
         <div>
-          <div class="brand-title">Enterprise Banking Data Science &amp; Decision Intelligence</div>
-          <div class="brand-subtitle">Treasury Forecasting • Branch OLS Benchmarking • Customer 360 RFM • AML Isolation Forest</div>
+          <div class="brand-title">Multi-Domain Data Science &amp; Decision Intelligence</div>
+          <div class="brand-subtitle">SARIMAX+GBR Forecasting • Peer OLS Benchmarking • Customer 360 RFM • Isolation Forest Shield</div>
         </div>
       </div>
       <div class="header-actions">
+        <label for="domainSwitcher" style="font-size:0.78rem;font-weight:600;color:var(--text-muted);">Industry Pack:</label>
+        <select id="domainSwitcher" class="domain-select" aria-label="Select Industry Domain Pack">
+          <option value="banking">🏦 Banking &amp; Treasury</option>
+          <option value="ecommerce_retail">🛒 E-Commerce &amp; Retail</option>
+          <option value="telecom">📡 Telecom &amp; CVM</option>
+          <option value="marketing_fintech">📈 Marketing &amp; Fintech</option>
+        </select>
         <span class="status-pill"><span class="status-dot"></span> SQL &amp; ML Mart Ready</span>
         <button id="refreshBtn" title="Re-run SQL & ML Pipeline">↻ Re-run Pipeline</button>
         <button id="themeToggle" aria-label="Toggle Light/Dark Theme">🌙 Dark Mode</button>
@@ -434,25 +469,33 @@
   </header>
 
   <main>
+    <div class="domain-banner">
+      <div>
+        <strong id="bannerDomainTitle">🏦 Commercial &amp; Retail Banking</strong> —
+        <span id="bannerDomainDesc" style="color:var(--text-secondary);">Branch network liquidity forecasting, peer-adjusted branch OLS benchmarking, CASA Customer 360 RFM segmentation, and AML/IBFT anomaly detection.</span>
+      </div>
+      <span class="badge badge-accent" id="bannerCommittee">Target Committee: ALCO, Retail Banking &amp; AML Compliance</span>
+    </div>
+
     <!-- Hero Actionable KPI Row -->
     <section class="kpi-grid" id="kpiGrid">
       <div class="kpi-card">
-        <div class="kpi-label">30-Day Deposit Inflow Forecast</div>
+        <div class="kpi-label" id="lblPrimaryInflow">30-Day Deposit Inflow Forecast</div>
         <div class="kpi-value" id="kpiDepositInflow">PKR 22.37B</div>
         <div class="kpi-delta" id="kpiForecastMape">Out-of-Time Ensemble MAPE: 3.02%</div>
       </div>
       <div class="kpi-card">
-        <div class="kpi-label">30-Day ATM Cash Replenishment</div>
+        <div class="kpi-label" id="lblSecondaryDemand">30-Day ATM Cash Replenishment</div>
         <div class="kpi-value" id="kpiAtmForecast">PKR 10.94B</div>
-        <div class="kpi-delta">Salary Window Surge: +37.1% (p &lt; 0.0001)</div>
+        <div class="kpi-delta" id="kpiSurgeLabel">Peak Cycle Surge: +37.1% (p &lt; 0.0001)</div>
       </div>
       <div class="kpi-card">
-        <div class="kpi-label">Retail &amp; SME CASA Book (5 Clusters)</div>
+        <div class="kpi-label" id="lblPortfolioBook">Retail &amp; SME CASA Book (5 Clusters)</div>
         <div class="kpi-value" id="kpiCasaBook">PKR 1.25B</div>
         <div class="kpi-delta" id="kpiSilhouette">K-Means + GMM Silhouette: 0.303</div>
       </div>
       <div class="kpi-card">
-        <div class="kpi-label">AML &amp; Velocity Anomaly Shield</div>
+        <div class="kpi-label">Isolation Forest &amp; Velocity Shield</div>
         <div class="kpi-value" id="kpiAnomalies">679 Alerts</div>
         <div class="kpi-delta" id="kpiAnomalyMetric">F1: 0.914 • ROC-AUC: 0.9996</div>
       </div>
@@ -461,9 +504,9 @@
     <!-- Tactile Navigation Tabs -->
     <nav class="tabs-bar" role="tablist">
       <button class="tab-btn active" data-tab="tab-exec">1. Executive Brief &amp; Recommendations</button>
-      <button class="tab-btn" data-tab="tab-forecast">2. Treasury &amp; ATM Forecasting + Stress Simulator</button>
-      <button class="tab-btn" data-tab="tab-branch">3. Branch Benchmarking &amp; Hypothesis Tests</button>
-      <button class="tab-btn" data-tab="tab-customer">4. Customer 360 Segmentation &amp; AML Anomalies</button>
+      <button class="tab-btn" data-tab="tab-forecast">2. Time-Series Forecasting &amp; Stress Simulator</button>
+      <button class="tab-btn" data-tab="tab-branch">3. Peer Benchmarking &amp; Hypothesis Tests</button>
+      <button class="tab-btn" data-tab="tab-customer">4. Customer 360 Segmentation &amp; Anomaly Queue</button>
       <button class="tab-btn" data-tab="tab-bi">5. SQL Data Quality &amp; Power BI (.pbip) Mart</button>
     </nav>
 
@@ -472,7 +515,7 @@
       <div class="card">
         <div class="card-header">
           <div>
-            <div class="card-title">Automated Leadership Recommendations (ALCO, Retail Banking &amp; Compliance)</div>
+            <div class="card-title" id="execTitle">Automated Leadership Recommendations</div>
             <div class="card-subtitle">Deterministic, PII-Sanitized Executive Actions Grounded in DuckDB SQL &amp; Statistical Models</div>
           </div>
           <span class="badge badge-emerald">PII Guardrail Verified • Zero Hallucination</span>
@@ -486,13 +529,13 @@
       </div>
     </section>
 
-    <!-- TAB 2: Treasury & ATM Forecasting + ALCO Simulator -->
+    <!-- TAB 2: Forecasting + What-If Simulator -->
     <section class="tab-panel" id="tab-forecast">
       <div class="section-grid">
         <div class="card">
           <div class="card-header">
             <div>
-              <div class="card-title">Bank-Wide Daily ATM Cash Replenishment Forecast (PKR Millions)</div>
+              <div class="card-title" id="chartTitle">Daily Replenishment &amp; Capacity Demand Forecast</div>
               <div class="card-subtitle">Validation Backtest vs. 30-Day Forward Projection with 95% Prediction Intervals</div>
             </div>
             <span class="badge badge-accent">SARIMAX(1,0,1)(1,0,1,7) + Gradient Boosting</span>
@@ -505,25 +548,25 @@
         <div class="card">
           <div class="card-header">
             <div>
-              <div class="card-title">ALCO Treasury What-If Stress Simulator</div>
-              <div class="card-subtitle">Simulate KIBOR Policy Shifts &amp; Salary Surge</div>
+              <div class="card-title">What-If Scenario Stress Simulator</div>
+              <div class="card-subtitle">Simulate Macro Elasticity &amp; Peak Cycle Demand</div>
             </div>
           </div>
           <div class="slider-group">
-            <label><span>KIBOR Policy Rate Delta (bps)</span><span id="lblKibor">0 bps</span></label>
+            <label><span id="lblSimMacroTitle">Policy Rate / Elasticity Delta (bps)</span><span id="lblKibor">0 bps</span></label>
             <input type="range" id="simKibor" min="-300" max="300" step="25" value="0" />
           </div>
           <div class="slider-group">
-            <label><span>Salary Window ATM Surge Multiplier</span><span id="lblSalary">1.00x</span></label>
+            <label><span>Peak Window Surge Multiplier</span><span id="lblSalary">1.00x</span></label>
             <input type="range" id="simSalary" min="0.90" max="1.45" step="0.05" value="1.00" />
           </div>
           <div class="slider-group">
-            <label><span>Digital Onboarding Kiosk Rollout (%)</span><span id="lblCampaign">50%</span></label>
+            <label><span>Strategic Campaign Rollout (%)</span><span id="lblCampaign">50%</span></label>
             <input type="range" id="simCampaign" min="50" max="100" step="10" value="50" />
           </div>
-          <button class="btn-primary" id="runSimBtn" style="width:100%;margin-top:0.4rem;">Run ALCO Stress Scenario</button>
+          <button class="btn-primary" id="runSimBtn" style="width:100%;margin-top:0.4rem;">Run Scenario Stress Test</button>
           <div id="simOutputBox" style="margin-top:0.9rem;font-size:0.83rem;padding:0.75rem;border-radius:8px;background:var(--bg-subtle);">
-            Adjust sliders to stress-test 30-day deposit inflows and CIT armored cash buffers.
+            Adjust sliders to stress-test 30-day inflows and operational reserve buffers.
           </div>
         </div>
       </div>
@@ -547,13 +590,13 @@
       </div>
     </section>
 
-    <!-- TAB 3: Branch Benchmarking & Hypothesis Testing -->
+    <!-- TAB 3: Peer Benchmarking & Hypothesis Testing -->
     <section class="tab-panel" id="tab-branch">
       <div class="card">
         <div class="card-header">
           <div>
             <div class="card-title">Statistical Hypothesis Testing Suite (`scipy.stats` &amp; `statsmodels`)</div>
-            <div class="card-subtitle">Translating Business Questions into Parametric &amp; Stationarity Tests</div>
+            <div class="card-subtitle">Translating Domain Business Questions into Parametric &amp; Stationarity Tests</div>
           </div>
         </div>
         <table>
@@ -574,8 +617,8 @@
       <div class="card">
         <div class="card-header">
           <div>
-            <div class="card-title">Peer-Adjusted Branch Efficiency Benchmarking (`statsmodels` OLS Regression Residuals)</div>
-            <div class="card-subtitle">Controls for Staff Count, ATM Count, Catchment Population &amp; OPEX so Non-Metro Branches Are Evaluated Fairly</div>
+            <div class="card-title" id="benchTableTitle">Peer-Adjusted Efficiency Benchmarking (`statsmodels` OLS Regression Residuals)</div>
+            <div class="card-subtitle">Controls for Staff/Capacity, Footprint, Catchment Population &amp; OPEX so Non-Metro Units Are Evaluated Fairly</div>
           </div>
           <span class="badge badge-emerald" id="olsBadge">OLS R² = 0.89</span>
         </div>
@@ -583,10 +626,10 @@
           <thead>
             <tr>
               <th>Rank</th>
-              <th>Branch ID &amp; Name</th>
+              <th>Entity ID &amp; Name</th>
               <th>City / Tier</th>
-              <th>Actual 180d Net Deposit</th>
-              <th>Peer Expected Deposit</th>
+              <th>Actual 180d Net Inflow</th>
+              <th>Peer Expected Inflow</th>
               <th>Efficiency Index</th>
               <th>Benchmark Classification</th>
             </tr>
@@ -596,13 +639,13 @@
       </div>
     </section>
 
-    <!-- TAB 4: Customer 360 Segmentation & AML Anomaly Detection -->
+    <!-- TAB 4: Customer 360 Segmentation & Anomaly Detection -->
     <section class="tab-panel" id="tab-customer">
       <div class="card">
         <div class="card-header">
           <div>
             <div class="card-title">Customer 360 RFM &amp; Behavioral Segmentation (K-Means + GMM Soft Probability)</div>
-            <div class="card-subtitle">1,200 Retail, Remittance &amp; SME Accounts Clustered with Next-Best-Action Playbooks</div>
+            <div class="card-subtitle">1,200 Accounts Clustered into 5 Domain Personas with Automated Next-Best-Action Playbooks</div>
           </div>
         </div>
         <table>
@@ -612,7 +655,7 @@
               <th>Accounts</th>
               <th>Avg Recency (Days)</th>
               <th>Avg 180d Txns</th>
-              <th>Avg CASA Balance</th>
+              <th>Avg Balance / Wallet</th>
               <th>Est. Annual CLV</th>
               <th>Automated Next-Best-Action (NBA)</th>
             </tr>
@@ -625,7 +668,7 @@
         <div class="card-header">
           <div>
             <div class="card-title">High-Risk Transaction Anomaly Queue (Isolation Forest + Velocity Z-Score Shield)</div>
-            <div class="card-subtitle">Flagged Structuring Near 2.5M PKR Threshold &amp; Midnight High-Value IBFT Drains</div>
+            <div class="card-subtitle">Multivariate Outlier &amp; Rule Engine Scanning 45,000+ Events</div>
           </div>
         </div>
         <table>
@@ -657,7 +700,7 @@
           <span class="badge badge-accent">Power BI + Tableau Ready</span>
         </div>
         <p style="font-size:0.86rem;color:var(--text-secondary);">
-          All model outputs are materialized into a 5-table Star Schema with pre-authored DAX measures and Role-Based Access Control (`ALCO &amp; Executive Leadership`, `Regional Branch Operations`, `AML &amp; Fraud Compliance`). Click below to download any mart table directly:
+          All model outputs are materialized into a 5-table Star Schema with pre-authored DAX measures and Role-Based Access Control. Click below to download any mart table directly:
         </p>
         <div class="mart-links">
           <a class="mart-link" href="/api/v1/bi-mart/download/DimBranchBenchmark">⬇ DimBranchBenchmark.csv</a>
@@ -693,9 +736,10 @@
   </main>
 
   <script>
-    // Theme Persistence (Light / Dark Mode)
     const rootEl = document.documentElement;
     const themeBtn = document.getElementById("themeToggle");
+    const domainSelect = document.getElementById("domainSwitcher");
+
     const savedTheme = localStorage.getItem("ebi_ds_theme") || "light";
     if (savedTheme === "dark") {
       rootEl.setAttribute("data-theme", "dark");
@@ -709,7 +753,6 @@
       themeBtn.textContent = next === "dark" ? "☀️ Light Mode" : "🌙 Dark Mode";
     });
 
-    // Tab Navigation
     document.querySelectorAll(".tab-btn").forEach((btn) => {
       btn.addEventListener("click", () => {
         document.querySelectorAll(".tab-btn").forEach((b) => b.classList.remove("active"));
@@ -736,7 +779,6 @@
       const xStep = (w - padL - padR) / Math.max(series.length - 1, 1);
       const scaleY = (v) => padT + (h - padT - padB) * (1 - (v - minY) / (maxY - minY));
 
-      // Confidence band polygon
       const upperPts = series.map((d, i) => `${padL + i * xStep},${scaleY(d.forecast_atm_upper_95ci_pkr)}`);
       const lowerPts = [...series].reverse().map((d, idx) => {
         const i = series.length - 1 - idx;
@@ -753,13 +795,27 @@
         <polygon points="${upperPts.concat(lowerPts).join(" ")}" fill="rgba(2, 132, 199, 0.14)" />
         <path d="${actualPath}" fill="none" stroke="#10b981" stroke-width="2.2" />
         <path d="${forecastPath}" fill="none" stroke="#0284c7" stroke-width="2.2" stroke-dasharray="5,3" />
-        <text x="${padL + 8}" y="${padT + 14}" fill="currentColor" font-size="11" font-weight="600">🟢 Actual ATM Demand (Backtest)   🔵 Hybrid SARIMAX+GBR Forecast (with 95% CI)</text>
+        <text x="${padL + 8}" y="${padT + 14}" fill="currentColor" font-size="11" font-weight="600">🟢 Actual Demand (Backtest)   🔵 Hybrid SARIMAX+GBR Forecast (with 95% CI)</text>
       `;
     }
 
     async function loadDashboard() {
-      const res = await fetch("/api/v1/dashboard-bundle");
+      const domain = domainSelect.value;
+      const res = await fetch(`/api/v1/dashboard-bundle?domain=${encodeURIComponent(domain)}`);
       const data = await res.json();
+      const dInfo = data.active_domain;
+
+      // Update Domain Banner & Labels
+      document.getElementById("bannerDomainTitle").textContent = dInfo.short_badge + " — " + dInfo.display_name;
+      document.getElementById("bannerDomainDesc").textContent = dInfo.description;
+      document.getElementById("bannerCommittee").textContent = `Target Committee: ${dInfo.exec_committee_name}`;
+      document.getElementById("lblPrimaryInflow").textContent = dInfo.primary_inflow_label;
+      document.getElementById("lblSecondaryDemand").textContent = dInfo.secondary_demand_label;
+      document.getElementById("lblPortfolioBook").textContent = `${dInfo.portfolio_balance_label} (5 Clusters)`;
+      document.getElementById("execTitle").textContent = `Automated Leadership Recommendations (${dInfo.exec_committee_name})`;
+      document.getElementById("chartTitle").textContent = `${dInfo.secondary_demand_label} — Daily Trajectory`;
+      document.getElementById("lblSimMacroTitle").textContent = dInfo.macro_rate_label;
+      document.getElementById("benchTableTitle").textContent = `Peer-Adjusted ${dInfo.entity_label_singular} Efficiency Benchmarking (statsmodels OLS)`;
 
       // KPIs
       document.getElementById("kpiDepositInflow").textContent = fmtPKR(data.kpis.next_30d_deposit_inflow_forecast_pkr);
@@ -822,7 +878,7 @@
         </tr>
       `).join("");
 
-      // Branch Benchmarking
+      // Benchmarking
       document.getElementById("olsBadge").textContent = `OLS R² = ${data.branch_benchmarking.ols_summary.r_squared}`;
       const brBody = document.getElementById("branchBenchmarkTable");
       brBody.innerHTML = data.branch_benchmarking.branches.slice(0, 15).map(b => `
@@ -880,7 +936,10 @@
       `).join("");
     }
 
-    // Interactive Sliders
+    domainSelect.addEventListener("change", () => {
+      loadDashboard();
+    });
+
     const sKibor = document.getElementById("simKibor");
     const sSalary = document.getElementById("simSalary");
     const sCamp = document.getElementById("simCampaign");
@@ -893,6 +952,7 @@
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
+          domain: domainSelect.value,
           kibor_delta_bps: Number(sKibor.value),
           salary_surge_multiplier: Number(sSalary.value),
           digital_campaign_rollout_pct: Number(sCamp.value),
@@ -900,16 +960,16 @@
       });
       const out = await res.json();
       document.getElementById("simOutputBox").innerHTML = `
-        <div><strong>Stressed 30D Deposit Inflow:</strong> ${fmtPKR(out.stressed_30d_deposit_inflow_pkr)} (${out.incremental_deposit_inflow_pkr >= 0 ? '+' : ''}${fmtPKR(out.incremental_deposit_inflow_pkr)})</div>
-        <div style="margin-top:0.3rem;"><strong>Stressed 30D ATM Cash Demand:</strong> ${fmtPKR(out.stressed_30d_atm_demand_pkr)} (${out.incremental_atm_cash_required_pkr >= 0 ? '+' : ''}${fmtPKR(out.incremental_atm_cash_required_pkr)})</div>
-        <div style="margin-top:0.3rem;color:var(--accent);"><strong>Recommended 95% CIT Reserve Buffer:</strong> ${fmtPKR(out.recommended_treasury_buffer_pkr)}</div>
+        <div><strong>Stressed 30D Primary Inflow:</strong> ${fmtPKR(out.stressed_30d_deposit_inflow_pkr)} (${out.incremental_deposit_inflow_pkr >= 0 ? '+' : ''}${fmtPKR(out.incremental_deposit_inflow_pkr)})</div>
+        <div style="margin-top:0.3rem;"><strong>Stressed 30D Replenishment/Demand:</strong> ${fmtPKR(out.stressed_30d_atm_demand_pkr)} (${out.incremental_atm_cash_required_pkr >= 0 ? '+' : ''}${fmtPKR(out.incremental_atm_cash_required_pkr)})</div>
+        <div style="margin-top:0.3rem;color:var(--accent);"><strong>Recommended 95% Safety Reserve Buffer:</strong> ${fmtPKR(out.recommended_treasury_buffer_pkr)}</div>
       `;
     });
 
     document.getElementById("refreshBtn").addEventListener("click", async () => {
       const btn = document.getElementById("refreshBtn");
       btn.textContent = "⏳ Recomputing...";
-      await fetch("/api/v1/pipeline/refresh", { method: "POST" });
+      await fetch(`/api/v1/pipeline/refresh?domain=${encodeURIComponent(domainSelect.value)}`, { method: "POST" });
       await loadDashboard();
       btn.textContent = "↻ Re-run Pipeline";
     });

@@ -181,3 +181,28 @@ def test_powerbi_pbip_and_star_schema_mart_files_exist() -> None:
 
     pbip_file = Path(__file__).resolve().parents[1] / "bi" / "BankingExecutiveIntelligence.pbip"
     assert pbip_file.exists()
+
+
+def test_multi_domain_industry_packs_and_adapter() -> None:
+    client = TestClient(app)
+    r_domains = client.get("/api/v1/domains")
+    assert r_domains.status_code == 200
+    domain_keys = [d["domain_key"] for d in r_domains.json()["domains"]]
+    assert set(domain_keys) == {"banking", "ecommerce_retail", "telecom", "marketing_fintech"}
+
+    for dom_key, expected_prefix in [
+        ("banking", "BNK-BR-"),
+        ("ecommerce_retail", "RTL-HUB-"),
+        ("telecom", "TEL-RGN-"),
+        ("marketing_fintech", "MKT-POD-"),
+    ]:
+        r_bundle = client.get(f"/api/v1/dashboard-bundle?domain={dom_key}")
+        assert r_bundle.status_code == 200
+        b_json = r_bundle.json()
+        assert b_json["active_domain"]["domain_key"] == dom_key
+        first_entity = b_json["branch_benchmarking"]["branches"][0]["branch_id"]
+        assert first_entity.startswith(expected_prefix)
+        # Dimensionless ML metrics remain invariant across domain projections
+        assert b_json["kpis"]["forecast_ensemble_mape_pct"] < 8.0
+        assert b_json["kpis"]["anomaly_detection_roc_auc"] > 0.95
+
