@@ -1,9 +1,9 @@
 """Pillar 3: Controlled Enterprise GenAI Executive Narrator, Guardrails & Automated Recommendation Engine.
 
-Satisfies UBL JD Requirements:
-- "Automate model outputs into recurring recommendations, alerts and dashboards"
-- "Experience applying generative AI / LLMs in a controlled enterprise environment"
-- "Explain results, assumptions and model limitations clearly to business stakeholders"
+Core Capabilities:
+- Automating model outputs into recurring executive recommendations, alerts, and dashboards
+- Applying generative AI / LLMs in a controlled, zero-hallucination enterprise environment with PII redaction
+- Explaining statistical assumptions, confidence intervals, and model limitations clearly to business stakeholders
 """
 
 from __future__ import annotations
@@ -90,7 +90,7 @@ def build_controlled_executive_brief(
     )
 
     worst_branch = underperforming_branches[0] if underperforming_branches else {
-        "branch_id": "UBL-BR-1015",
+        "branch_id": "BNK-BR-1015",
         "branch_name": "Quetta Jinnah Road Branch #1",
         "efficiency_index_pct": 89.5,
         "value_add_residual_pkr": -18_500_000.0,
@@ -171,7 +171,7 @@ def build_controlled_executive_brief(
             ),
             recommended_action=(
                 "Route transactions with anomaly_risk_score >= 78.0 (specifically 00:00–04:00 IBFT drains and 2.40M–2.50M PKR "
-                "RAAST structuring) into real-time Cooling-Period hold and UBL Digital App biometric re-verification."
+                "RAAST structuring) into real-time Cooling-Period hold and Mobile Banking App biometric re-verification."
             ),
             expected_business_impact="Mitigates account takeover (ATO) loss exposure and satisfies SBP AML/CFT automated transaction monitoring mandates.",
         ),
@@ -210,7 +210,7 @@ def build_controlled_executive_brief(
                 "Observed 180-day transaction velocity reflects true customer liquidity rather than multi-bank split banking.",
             ],
             known_limitations=[
-                "Customers who maintain their primary salary account at a competitor bank and use UBL only as a secondary wallet may appear as 'Dormant_Churn_Risk' despite high external wealth.",
+                "Customers who maintain their primary salary account at a competitor bank and use this institution only as a secondary wallet may appear as 'Dormant_Churn_Risk' despite high external wealth.",
             ],
             mitigation_and_monitoring="Recompute cluster centroids monthly and inspect GMM soft-assignment probability (< 0.65 indicates boundary customers).",
         ),
@@ -246,7 +246,7 @@ def build_controlled_executive_brief(
     pii_ok = ("[REDACTED-" not in clean_summary_md) and not bool(CNIC_PATTERN.search(clean_summary_md))
 
     brief = ControlledGenAIExecutiveBrief(
-        brief_id="UBL-EXEC-BRIEF-2026-Q4",
+        brief_id="EXEC-BRIEF-2026-Q4",
         generated_at_utc=datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
         governance_mode="DETERMINISTIC_SCHEMA_GROUNDED_ZERO_HALLUCINATION",
         pii_sanitization_passed=pii_ok,

@@ -1,4 +1,4 @@
-"""Comprehensive Pytest Verification Suite for UBL Banking Data Science & BI Platform."""
+"""Comprehensive Pytest Verification Suite for Enterprise Banking Data Science & BI Platform."""
 
 from __future__ import annotations
 
@@ -133,10 +133,10 @@ def test_customer_segmentation_and_anomaly_detection() -> None:
 
 
 def test_pii_redaction_and_fastapi_endpoints() -> None:
-    dirty = "Customer CUST-200145 with CNIC 42101-1234567-1 and IBAN PK36UNIL0000001123456789 wired funds."
+    dirty = "Customer CUST-200145 with CNIC 42101-1234567-1 and IBAN PK36ABCD0000001123456789 wired funds."
     cleaned = sanitize_pii_text(dirty)
     assert "42101-1234567-1" not in cleaned
-    assert "PK36UNIL0000001123456789" not in cleaned
+    assert "PK36ABCD0000001123456789" not in cleaned
     assert "CUST-200***" in cleaned
 
     client = TestClient(app)
@@ -179,5 +179,5 @@ def test_powerbi_pbip_and_star_schema_mart_files_exist() -> None:
     for fname in expected_csvs:
         assert (MART_DIR / fname).exists(), f"Missing BI mart export {fname}"
 
-    pbip_file = Path(__file__).resolve().parents[1] / "bi" / "UBLBankingExecutiveIntelligence.pbip"
+    pbip_file = Path(__file__).resolve().parents[1] / "bi" / "BankingExecutiveIntelligence.pbip"
     assert pbip_file.exists()

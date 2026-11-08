@@ -1,7 +1,7 @@
-"""Synthetic Pakistani Banking Data Generator (Branches, CASA Accounts, Transactions, Daily Liquidity).
+"""Synthetic Commercial Banking Data Generator (Branches, CASA Accounts, Transactions, Daily Liquidity).
 
-Simulates realistic United Bank Limited (UBL) style retail, SME, and corporate banking data:
-- 30 Bank Branches across Karachi, Lahore, Islamabad, Rawalpindi, Faisalabad, Multan, Peshawar, Quetta
+Simulates realistic enterprise retail, SME, and corporate banking data:
+- 30 Bank Branches across major metropolitan, commercial, urban, and semi-urban regions
 - 1,200 Customer CASA & Term Deposit Accounts with realistic demographic & digital onboarding attributes
 - 180 Days of Branch-Level Daily Deposit Inflows, Outflows, ATM Cash Replenishment, and Macro Indicators (KIBOR, Eid/Salary spikes)
 - 45,000+ Transactional records across RAAST, IBFT, ATM, POS, Branch Counter, and Mobile App channels,
@@ -51,7 +51,7 @@ def generate_banking_dataset(
     branches = []
     for i in range(n_branches):
         region_info = REGIONS[i % len(REGIONS)]
-        branch_code = f"UBL-BR-{1001 + i}"
+        branch_code = f"BNK-BR-{1001 + i}"
         tier = region_info[2]
         multiplier = region_info[3]
         staff_count = int(rng.integers(12, 36) * (1.15 if tier == "Metropolitan" else 0.9))

@@ -1078,7 +1078,7 @@
     },
     "branches": [
       {
-        "branch_id": "UBL-BR-1018",
+        "branch_id": "BNK-BR-1018",
         "branch_name": "Karachi Gulshan Branch #2",
         "city": "Karachi",
         "province": "Sindh",
@@ -1110,7 +1110,7 @@
         "efficiency_rank": 1
       },
       {
-        "branch_id": "UBL-BR-1002",
+        "branch_id": "BNK-BR-1002",
         "branch_name": "Karachi Clifton Branch #1",
         "city": "Karachi",
         "province": "Sindh",
@@ -1142,7 +1142,7 @@
         "efficiency_rank": 2
       },
       {
-        "branch_id": "UBL-BR-1017",
+        "branch_id": "BNK-BR-1017",
         "branch_name": "Karachi Clifton Branch #2",
         "city": "Karachi",
         "province": "Sindh",
@@ -1174,7 +1174,7 @@
         "efficiency_rank": 3
       },
       {
-        "branch_id": "UBL-BR-1020",
+        "branch_id": "BNK-BR-1020",
         "branch_name": "Lahore DHA Branch #2",
         "city": "Lahore",
         "province": "Punjab",
@@ -1206,7 +1206,7 @@
         "efficiency_rank": 4
       },
       {
-        "branch_id": "UBL-BR-1019",
+        "branch_id": "BNK-BR-1019",
         "branch_name": "Lahore Gulberg Branch #2",
         "city": "Lahore",
         "province": "Punjab",
@@ -1238,7 +1238,7 @@
         "efficiency_rank": 5
       },
       {
-        "branch_id": "UBL-BR-1023",
+        "branch_id": "BNK-BR-1023",
         "branch_name": "Islamabad F-10 Branch #2",
         "city": "Islamabad",
         "province": "ICT",
@@ -1270,7 +1270,7 @@
         "efficiency_rank": 6
       },
       {
-        "branch_id": "UBL-BR-1001",
+        "branch_id": "BNK-BR-1001",
         "branch_name": "Karachi South Branch #1",
         "city": "Karachi",
         "province": "Sindh",
@@ -1302,7 +1302,7 @@
         "efficiency_rank": 7
       },
       {
-        "branch_id": "UBL-BR-1012",
+        "branch_id": "BNK-BR-1012",
         "branch_name": "Peshawar University Rd Branch #1",
         "city": "Peshawar",
         "province": "KPK",
@@ -1334,7 +1334,7 @@
         "efficiency_rank": 8
       },
       {
-        "branch_id": "UBL-BR-1007",
+        "branch_id": "BNK-BR-1007",
         "branch_name": "Islamabad Blue Area Branch #1",
         "city": "Islamabad",
         "province": "ICT",
@@ -1366,7 +1366,7 @@
         "efficiency_rank": 9
       },
       {
-        "branch_id": "UBL-BR-1021",
+        "branch_id": "BNK-BR-1021",
         "branch_name": "Lahore Johar Town Branch #2",
         "city": "Lahore",
         "province": "Punjab",
@@ -1398,7 +1398,7 @@
         "efficiency_rank": 10
       },
       {
-        "branch_id": "UBL-BR-1013",
+        "branch_id": "BNK-BR-1013",
         "branch_name": "Sialkot Export Zone Branch #1",
         "city": "Sialkot",
         "province": "Punjab",
@@ -1430,7 +1430,7 @@
         "efficiency_rank": 11
       },
       {
-        "branch_id": "UBL-BR-1016",
+        "branch_id": "BNK-BR-1016",
         "branch_name": "Karachi South Branch #2",
         "city": "Karachi",
         "province": "Sindh",
@@ -1462,7 +1462,7 @@
         "efficiency_rank": 12
       },
       {
-        "branch_id": "UBL-BR-1024",
+        "branch_id": "BNK-BR-1024",
         "branch_name": "Rawalpindi Saddar Branch #2",
         "city": "Rawalpindi",
         "province": "Punjab",
@@ -1494,7 +1494,7 @@
         "efficiency_rank": 13
       },
       {
-        "branch_id": "UBL-BR-1005",
+        "branch_id": "BNK-BR-1005",
         "branch_name": "Lahore DHA Branch #1",
         "city": "Lahore",
         "province": "Punjab",
@@ -1526,7 +1526,7 @@
         "efficiency_rank": 14
       },
       {
-        "branch_id": "UBL-BR-1028",
+        "branch_id": "BNK-BR-1028",
         "branch_name": "Sialkot Export Zone Branch #2",
         "city": "Sialkot",
         "province": "Punjab",
@@ -1558,7 +1558,7 @@
         "efficiency_rank": 15
       },
       {
-        "branch_id": "UBL-BR-1003",
+        "branch_id": "BNK-BR-1003",
         "branch_name": "Karachi Gulshan Branch #1",
         "city": "Karachi",
         "province": "Sindh",
@@ -1590,7 +1590,7 @@
         "efficiency_rank": 16
       },
       {
-        "branch_id": "UBL-BR-1004",
+        "branch_id": "BNK-BR-1004",
         "branch_name": "Lahore Gulberg Branch #1",
         "city": "Lahore",
         "province": "Punjab",
@@ -1622,7 +1622,7 @@
         "efficiency_rank": 17
       },
       {
-        "branch_id": "UBL-BR-1025",
+        "branch_id": "BNK-BR-1025",
         "branch_name": "Faisalabad Clock Tower Branch #2",
         "city": "Faisalabad",
         "province": "Punjab",
@@ -1654,7 +1654,7 @@
         "efficiency_rank": 18
       },
       {
-        "branch_id": "UBL-BR-1009",
+        "branch_id": "BNK-BR-1009",
         "branch_name": "Rawalpindi Saddar Branch #1",
         "city": "Rawalpindi",
         "province": "Punjab",
@@ -1686,7 +1686,7 @@
         "efficiency_rank": 19
       },
       {
-        "branch_id": "UBL-BR-1026",
+        "branch_id": "BNK-BR-1026",
         "branch_name": "Multan Cantt Branch #2",
         "city": "Multan",
         "province": "Punjab",
@@ -1718,7 +1718,7 @@
         "efficiency_rank": 20
       },
       {
-        "branch_id": "UBL-BR-1011",
+        "branch_id": "BNK-BR-1011",
         "branch_name": "Multan Cantt Branch #1",
         "city": "Multan",
         "province": "Punjab",
@@ -1750,7 +1750,7 @@
         "efficiency_rank": 21
       },
       {
-        "branch_id": "UBL-BR-1010",
+        "branch_id": "BNK-BR-1010",
         "branch_name": "Faisalabad Clock Tower Branch #1",
         "city": "Faisalabad",
         "province": "Punjab",
@@ -1782,7 +1782,7 @@
         "efficiency_rank": 22
       },
       {
-        "branch_id": "UBL-BR-1008",
+        "branch_id": "BNK-BR-1008",
         "branch_name": "Islamabad F-10 Branch #1",
         "city": "Islamabad",
         "province": "ICT",
@@ -1814,7 +1814,7 @@
         "efficiency_rank": 23
       },
       {
-        "branch_id": "UBL-BR-1022",
+        "branch_id": "BNK-BR-1022",
         "branch_name": "Islamabad Blue Area Branch #2",
         "city": "Islamabad",
         "province": "ICT",
@@ -1846,7 +1846,7 @@
         "efficiency_rank": 24
       },
       {
-        "branch_id": "UBL-BR-1027",
+        "branch_id": "BNK-BR-1027",
         "branch_name": "Peshawar University Rd Branch #2",
         "city": "Peshawar",
         "province": "KPK",
@@ -1878,7 +1878,7 @@
         "efficiency_rank": 25
       },
       {
-        "branch_id": "UBL-BR-1030",
+        "branch_id": "BNK-BR-1030",
         "branch_name": "Quetta Jinnah Road Branch #2",
         "city": "Quetta",
         "province": "Balochistan",
@@ -1910,7 +1910,7 @@
         "efficiency_rank": 26
       },
       {
-        "branch_id": "UBL-BR-1006",
+        "branch_id": "BNK-BR-1006",
         "branch_name": "Lahore Johar Town Branch #1",
         "city": "Lahore",
         "province": "Punjab",
@@ -1942,7 +1942,7 @@
         "efficiency_rank": 27
       },
       {
-        "branch_id": "UBL-BR-1029",
+        "branch_id": "BNK-BR-1029",
         "branch_name": "Gujranwala GT Road Branch #2",
         "city": "Gujranwala",
         "province": "Punjab",
@@ -1974,7 +1974,7 @@
         "efficiency_rank": 28
       },
       {
-        "branch_id": "UBL-BR-1014",
+        "branch_id": "BNK-BR-1014",
         "branch_name": "Gujranwala GT Road Branch #1",
         "city": "Gujranwala",
         "province": "Punjab",
@@ -2006,7 +2006,7 @@
         "efficiency_rank": 29
       },
       {
-        "branch_id": "UBL-BR-1015",
+        "branch_id": "BNK-BR-1015",
         "branch_name": "Quetta Jinnah Road Branch #1",
         "city": "Quetta",
         "province": "Balochistan",
@@ -2085,7 +2085,7 @@
         "total_segment_casa_pkr": 1013569177.92,
         "avg_annual_clv_pkr": 239560.95,
         "digital_txn_share": 0.7271,
-        "recommended_action": "Priority Banking upgrade; pitch UBL Ameen / Mutual Fund wealth products and Premier multi-currency Visa Infinite."
+        "recommended_action": "Priority Banking upgrade; pitch Islamic / Mutual Fund wealth products and Premier multi-currency Visa Infinite."
       },
       {
         "customer_segment": "High_Value_SME_Commercial",
@@ -2109,7 +2109,7 @@
         "total_segment_casa_pkr": 90927537.77,
         "avg_annual_clv_pkr": 15500.49,
         "digital_txn_share": 0.7234,
-        "recommended_action": "Pre-approve instant digital personal loan / BNPL credit line via UBL Digital App push notification."
+        "recommended_action": "Pre-approve instant digital personal loan / BNPL credit line via Mobile Banking App push notification."
       },
       {
         "customer_segment": "Salaried_Core_Retail",
@@ -2181,7 +2181,7 @@
       {
         "transaction_id": "TXN-5014633",
         "customer_id": "CUST-200041",
-        "branch_id": "UBL-BR-1028",
+        "branch_id": "BNK-BR-1028",
         "txn_timestamp": "2026-07-05 04:41:00",
         "txn_date": "2026-07-05",
         "txn_hour": 4,
@@ -2208,7 +2208,7 @@
       {
         "transaction_id": "TXN-5006821",
         "customer_id": "CUST-201033",
-        "branch_id": "UBL-BR-1002",
+        "branch_id": "BNK-BR-1002",
         "txn_timestamp": "2026-09-13 08:18:00",
         "txn_date": "2026-09-13",
         "txn_hour": 8,
@@ -2235,7 +2235,7 @@
       {
         "transaction_id": "TXN-5005395",
         "customer_id": "CUST-200388",
-        "branch_id": "UBL-BR-1002",
+        "branch_id": "BNK-BR-1002",
         "txn_timestamp": "2026-08-01 04:47:00",
         "txn_date": "2026-08-01",
         "txn_hour": 4,
@@ -2254,7 +2254,7 @@
         "is_odd_hour": 1,
         "is_near_aml_reporting_threshold": 0,
         "customer_same_day_txn_count": 3,
-        "customer_same_day_volume_pkr": 6081709.170000001,
+        "customer_same_day_volume_pkr": 6081709.17,
         "anomaly_risk_score": 97.91,
         "model_anomaly_flag": 1,
         "explainable_alert_reason": "DISPROPORTIONATE_TO_DECLARED_INCOME_ODD_HOUR"
@@ -2262,7 +2262,7 @@
       {
         "transaction_id": "TXN-5016679",
         "customer_id": "CUST-200281",
-        "branch_id": "UBL-BR-1003",
+        "branch_id": "BNK-BR-1003",
         "txn_timestamp": "2026-09-06 07:15:00",
         "txn_date": "2026-09-06",
         "txn_hour": 7,
@@ -2289,7 +2289,7 @@
       {
         "transaction_id": "TXN-5003659",
         "customer_id": "CUST-200483",
-        "branch_id": "UBL-BR-1025",
+        "branch_id": "BNK-BR-1025",
         "txn_timestamp": "2026-05-24 11:04:00",
         "txn_date": "2026-05-24",
         "txn_hour": 11,
@@ -2316,7 +2316,7 @@
       {
         "transaction_id": "TXN-5024305",
         "customer_id": "CUST-200662",
-        "branch_id": "UBL-BR-1025",
+        "branch_id": "BNK-BR-1025",
         "txn_timestamp": "2026-09-24 07:13:00",
         "txn_date": "2026-09-24",
         "txn_hour": 7,
@@ -2343,7 +2343,7 @@
       {
         "transaction_id": "TXN-5005085",
         "customer_id": "CUST-200752",
-        "branch_id": "UBL-BR-1007",
+        "branch_id": "BNK-BR-1007",
         "txn_timestamp": "2026-07-19 02:09:00",
         "txn_date": "2026-07-19",
         "txn_hour": 2,
@@ -2370,7 +2370,7 @@
       {
         "transaction_id": "TXN-5029141",
         "customer_id": "CUST-200815",
-        "branch_id": "UBL-BR-1001",
+        "branch_id": "BNK-BR-1001",
         "txn_timestamp": "2026-06-21 16:50:00",
         "txn_date": "2026-06-21",
         "txn_hour": 16,
@@ -2397,7 +2397,7 @@
       {
         "transaction_id": "TXN-5028645",
         "customer_id": "CUST-200603",
-        "branch_id": "UBL-BR-1023",
+        "branch_id": "BNK-BR-1023",
         "txn_timestamp": "2026-06-21 02:51:00",
         "txn_date": "2026-06-21",
         "txn_hour": 2,
@@ -2424,7 +2424,7 @@
       {
         "transaction_id": "TXN-5018167",
         "customer_id": "CUST-200417",
-        "branch_id": "UBL-BR-1024",
+        "branch_id": "BNK-BR-1024",
         "txn_timestamp": "2026-09-14 10:08:00",
         "txn_date": "2026-09-14",
         "txn_hour": 10,
@@ -2451,7 +2451,7 @@
       {
         "transaction_id": "TXN-5003845",
         "customer_id": "CUST-201090",
-        "branch_id": "UBL-BR-1001",
+        "branch_id": "BNK-BR-1001",
         "txn_timestamp": "2026-06-30 09:48:00",
         "txn_date": "2026-06-30",
         "txn_hour": 9,
@@ -2478,7 +2478,7 @@
       {
         "transaction_id": "TXN-5017671",
         "customer_id": "CUST-200968",
-        "branch_id": "UBL-BR-1016",
+        "branch_id": "BNK-BR-1016",
         "txn_timestamp": "2026-09-06 02:00:00",
         "txn_date": "2026-09-06",
         "txn_hour": 2,
@@ -2505,7 +2505,7 @@
       {
         "transaction_id": "TXN-5043029",
         "customer_id": "CUST-200223",
-        "branch_id": "UBL-BR-1009",
+        "branch_id": "BNK-BR-1009",
         "txn_timestamp": "2026-05-06 03:37:00",
         "txn_date": "2026-05-06",
         "txn_hour": 3,
@@ -2532,7 +2532,7 @@
       {
         "transaction_id": "TXN-5023747",
         "customer_id": "CUST-200664",
-        "branch_id": "UBL-BR-1003",
+        "branch_id": "BNK-BR-1003",
         "txn_timestamp": "2026-06-30 21:33:00",
         "txn_date": "2026-06-30",
         "txn_hour": 21,
@@ -2559,7 +2559,7 @@
       {
         "transaction_id": "TXN-5032117",
         "customer_id": "CUST-200604",
-        "branch_id": "UBL-BR-1013",
+        "branch_id": "BNK-BR-1013",
         "txn_timestamp": "2026-06-06 15:34:00",
         "txn_date": "2026-06-06",
         "txn_hour": 15,
@@ -2586,7 +2586,7 @@
       {
         "transaction_id": "TXN-5036891",
         "customer_id": "CUST-201034",
-        "branch_id": "UBL-BR-1013",
+        "branch_id": "BNK-BR-1013",
         "txn_timestamp": "2026-10-10 00:41:00",
         "txn_date": "2026-10-10",
         "txn_hour": 0,
@@ -2613,7 +2613,7 @@
       {
         "transaction_id": "TXN-5001551",
         "customer_id": "CUST-201037",
-        "branch_id": "UBL-BR-1030",
+        "branch_id": "BNK-BR-1030",
         "txn_timestamp": "2026-09-27 03:09:00",
         "txn_date": "2026-09-27",
         "txn_hour": 3,
@@ -2640,7 +2640,7 @@
       {
         "transaction_id": "TXN-5016927",
         "customer_id": "CUST-200622",
-        "branch_id": "UBL-BR-1021",
+        "branch_id": "BNK-BR-1021",
         "txn_timestamp": "2026-06-22 03:49:00",
         "txn_date": "2026-06-22",
         "txn_hour": 3,
@@ -2667,7 +2667,7 @@
       {
         "transaction_id": "TXN-5004217",
         "customer_id": "CUST-201073",
-        "branch_id": "UBL-BR-1016",
+        "branch_id": "BNK-BR-1016",
         "txn_timestamp": "2026-06-13 16:09:00",
         "txn_date": "2026-06-13",
         "txn_hour": 16,
@@ -2694,7 +2694,7 @@
       {
         "transaction_id": "TXN-5042781",
         "customer_id": "CUST-200235",
-        "branch_id": "UBL-BR-1004",
+        "branch_id": "BNK-BR-1004",
         "txn_timestamp": "2026-09-01 02:14:00",
         "txn_date": "2026-09-01",
         "txn_hour": 2,
@@ -2721,7 +2721,7 @@
       {
         "transaction_id": "TXN-5027095",
         "customer_id": "CUST-200644",
-        "branch_id": "UBL-BR-1012",
+        "branch_id": "BNK-BR-1012",
         "txn_timestamp": "2026-07-27 19:10:00",
         "txn_date": "2026-07-27",
         "txn_hour": 19,
@@ -2748,7 +2748,7 @@
       {
         "transaction_id": "TXN-5042347",
         "customer_id": "CUST-200756",
-        "branch_id": "UBL-BR-1027",
+        "branch_id": "BNK-BR-1027",
         "txn_timestamp": "2026-10-23 10:48:00",
         "txn_date": "2026-10-23",
         "txn_hour": 10,
@@ -2775,7 +2775,7 @@
       {
         "transaction_id": "TXN-5025235",
         "customer_id": "CUST-201200",
-        "branch_id": "UBL-BR-1023",
+        "branch_id": "BNK-BR-1023",
         "txn_timestamp": "2026-05-12 13:41:00",
         "txn_date": "2026-05-12",
         "txn_hour": 13,
@@ -2802,7 +2802,7 @@
       {
         "transaction_id": "TXN-5033605",
         "customer_id": "CUST-201182",
-        "branch_id": "UBL-BR-1013",
+        "branch_id": "BNK-BR-1013",
         "txn_timestamp": "2026-07-04 08:54:00",
         "txn_date": "2026-07-04",
         "txn_hour": 8,
@@ -2829,7 +2829,7 @@
       {
         "transaction_id": "TXN-5011657",
         "customer_id": "CUST-201073",
-        "branch_id": "UBL-BR-1016",
+        "branch_id": "BNK-BR-1016",
         "txn_timestamp": "2026-08-27 18:56:00",
         "txn_date": "2026-08-27",
         "txn_hour": 18,
@@ -2856,7 +2856,7 @@
       {
         "transaction_id": "TXN-5019903",
         "customer_id": "CUST-200388",
-        "branch_id": "UBL-BR-1002",
+        "branch_id": "BNK-BR-1002",
         "txn_timestamp": "2026-05-09 01:02:00",
         "txn_date": "2026-05-09",
         "txn_hour": 1,
@@ -2883,7 +2883,7 @@
       {
         "transaction_id": "TXN-5002357",
         "customer_id": "CUST-200925",
-        "branch_id": "UBL-BR-1002",
+        "branch_id": "BNK-BR-1002",
         "txn_timestamp": "2026-05-18 10:05:00",
         "txn_date": "2026-05-18",
         "txn_hour": 10,
@@ -2910,7 +2910,7 @@
       {
         "transaction_id": "TXN-5009301",
         "customer_id": "CUST-201154",
-        "branch_id": "UBL-BR-1016",
+        "branch_id": "BNK-BR-1016",
         "txn_timestamp": "2026-10-13 01:55:00",
         "txn_date": "2026-10-13",
         "txn_hour": 1,
@@ -2937,7 +2937,7 @@
       {
         "transaction_id": "TXN-5019097",
         "customer_id": "CUST-200348",
-        "branch_id": "UBL-BR-1021",
+        "branch_id": "BNK-BR-1021",
         "txn_timestamp": "2026-08-11 20:27:00",
         "txn_date": "2026-08-11",
         "txn_hour": 20,
@@ -2964,7 +2964,7 @@
       {
         "transaction_id": "TXN-5036705",
         "customer_id": "CUST-201045",
-        "branch_id": "UBL-BR-1026",
+        "branch_id": "BNK-BR-1026",
         "txn_timestamp": "2026-08-02 00:48:00",
         "txn_date": "2026-08-02",
         "txn_hour": 0,
@@ -2991,7 +2991,7 @@
       {
         "transaction_id": "TXN-5044021",
         "customer_id": "CUST-201195",
-        "branch_id": "UBL-BR-1030",
+        "branch_id": "BNK-BR-1030",
         "txn_timestamp": "2026-05-08 13:51:00",
         "txn_date": "2026-05-08",
         "txn_hour": 13,
@@ -3018,7 +3018,7 @@
       {
         "transaction_id": "TXN-5022445",
         "customer_id": "CUST-200106",
-        "branch_id": "UBL-BR-1030",
+        "branch_id": "BNK-BR-1030",
         "txn_timestamp": "2026-07-01 00:27:00",
         "txn_date": "2026-07-01",
         "txn_hour": 0,
@@ -3045,7 +3045,7 @@
       {
         "transaction_id": "TXN-5031745",
         "customer_id": "CUST-200446",
-        "branch_id": "UBL-BR-1027",
+        "branch_id": "BNK-BR-1027",
         "txn_timestamp": "2026-05-04 11:19:00",
         "txn_date": "2026-05-04",
         "txn_hour": 11,
@@ -3072,7 +3072,7 @@
       {
         "transaction_id": "TXN-5036395",
         "customer_id": "CUST-200331",
-        "branch_id": "UBL-BR-1013",
+        "branch_id": "BNK-BR-1013",
         "txn_timestamp": "2026-10-03 08:18:00",
         "txn_date": "2026-10-03",
         "txn_hour": 8,
@@ -3099,7 +3099,7 @@
       {
         "transaction_id": "TXN-5031373",
         "customer_id": "CUST-200706",
-        "branch_id": "UBL-BR-1006",
+        "branch_id": "BNK-BR-1006",
         "txn_timestamp": "2026-09-23 09:29:00",
         "txn_date": "2026-09-23",
         "txn_hour": 9,
@@ -3126,7 +3126,7 @@
       {
         "transaction_id": "TXN-5030133",
         "customer_id": "CUST-200595",
-        "branch_id": "UBL-BR-1007",
+        "branch_id": "BNK-BR-1007",
         "txn_timestamp": "2026-07-24 01:43:00",
         "txn_date": "2026-07-24",
         "txn_hour": 1,
@@ -3153,7 +3153,7 @@
       {
         "transaction_id": "TXN-5039371",
         "customer_id": "CUST-201111",
-        "branch_id": "UBL-BR-1012",
+        "branch_id": "BNK-BR-1012",
         "txn_timestamp": "2026-07-13 11:46:00",
         "txn_date": "2026-07-13",
         "txn_hour": 11,
@@ -3180,7 +3180,7 @@
       {
         "transaction_id": "TXN-5008185",
         "customer_id": "CUST-200188",
-        "branch_id": "UBL-BR-1002",
+        "branch_id": "BNK-BR-1002",
         "txn_timestamp": "2026-05-26 02:10:00",
         "txn_date": "2026-05-26",
         "txn_hour": 2,
@@ -3207,7 +3207,7 @@
       {
         "transaction_id": "TXN-5026785",
         "customer_id": "CUST-200017",
-        "branch_id": "UBL-BR-1026",
+        "branch_id": "BNK-BR-1026",
         "txn_timestamp": "2026-09-07 01:19:00",
         "txn_date": "2026-09-07",
         "txn_hour": 1,
@@ -3234,7 +3234,7 @@
       {
         "transaction_id": "TXN-5018043",
         "customer_id": "CUST-200357",
-        "branch_id": "UBL-BR-1022",
+        "branch_id": "BNK-BR-1022",
         "txn_timestamp": "2026-06-19 02:11:00",
         "txn_date": "2026-06-19",
         "txn_hour": 2,
@@ -3261,8 +3261,8 @@
     ]
   },
   "executive_brief": {
-    "brief_id": "UBL-EXEC-BRIEF-2026-Q4",
-    "generated_at_utc": "2026-11-08T17:55:41Z",
+    "brief_id": "EXEC-BRIEF-2026-Q4",
+    "generated_at_utc": "2026-11-08T21:57:24Z",
     "governance_mode": "DETERMINISTIC_SCHEMA_GROUNDED_ZERO_HALLUCINATION",
     "pii_sanitization_passed": true,
     "numeric_grounding_verified": true,
@@ -3283,7 +3283,7 @@
         "domain": "BRANCH_NETWORK",
         "priority": "HIGH",
         "headline": "Expand Digital Self-Onboarding Kiosks & Remediate Underperforming Peer Branches",
-        "quantified_evidence": "Welch two-sample t-test confirms Digital Onboarding Campaign branches generated +14.2% higher 180-day deposit inflows (p=0.0592). Peer-adjusted OLS benchmarking (R\u00b2=0.850) identified 10 branches below the 94% efficiency band (lowest: UBL-BR-1015 at 76.0% efficiency).",
+        "quantified_evidence": "Welch two-sample t-test confirms Digital Onboarding Campaign branches generated +14.2% higher 180-day deposit inflows (p=0.0592). Peer-adjusted OLS benchmarking (R\u00b2=0.850) identified 10 branches below the 94% efficiency band (lowest: BNK-BR-1015 at 76.0% efficiency).",
         "recommended_action": "Deploy digital account-opening kiosks to the 15 control branches immediately and initiate SME deposit mobilization scorecards for branches below 94% peer-adjusted efficiency.",
         "expected_business_impact": "Projected +PKR 1.85B incremental low-cost CASA deposit mobilization over the next two quarters."
       },
@@ -3302,7 +3302,7 @@
         "priority": "CRITICAL",
         "headline": "Enforce Step-Up Biometric Auth on Midnight High-Value IBFT & Sub-2.5M Structuring",
         "quantified_evidence": "Hybrid Isolation Forest + Velocity Rule engine scanned 45,000 transactions and flagged 679 high-risk anomalies (1.51% alert rate; F1=0.914, ROC-AUC=1.000), protecting PKR 3.62B in exposed volume.",
-        "recommended_action": "Route transactions with anomaly_risk_score >= 78.0 (specifically 00:00\u201304:00 IBFT drains and 2.40M\u20132.50M PKR RAAST structuring) into real-time Cooling-Period hold and UBL Digital App biometric re-verification.",
+        "recommended_action": "Route transactions with anomaly_risk_score >= 78.0 (specifically 00:00\u201304:00 IBFT drains and 2.40M\u20132.50M PKR RAAST structuring) into real-time Cooling-Period hold and Mobile Banking App biometric re-verification.",
         "expected_business_impact": "Mitigates account takeover (ATO) loss exposure and satisfies SBP AML/CFT automated transaction monitoring mandates."
       }
     ],
@@ -3339,7 +3339,7 @@
           "Observed 180-day transaction velocity reflects true customer liquidity rather than multi-bank split banking."
         ],
         "known_limitations": [
-          "Customers who maintain their primary salary account at a competitor bank and use UBL only as a secondary wallet may appear as 'Dormant_Churn_Risk' despite high external wealth."
+          "Customers who maintain their primary salary account at a competitor bank and use this institution only as a secondary wallet may appear as 'Dormant_Churn_Risk' despite high external wealth."
         ],
         "mitigation_and_monitoring": "Recompute cluster centroids monthly and inspect GMM soft-assignment probability (< 0.65 indicates boundary customers)."
       },

@@ -1,9 +1,9 @@
 """Enterprise SQL Data Engineering, Feature Engineering & Data Quality Validation Layer (DuckDB).
 
-Satisfies UBL JD Requirements:
-- "Strong SQL skills on large datasets"
-- "Prior experience in data engineering or data analysis (building data pipelines, preparing and validating datasets) alongside data science work"
-- "Work with the data engineering team on data requirements, features and data quality"
+Core Capabilities:
+- Strong SQL analytics on large transactional and customer datasets
+- End-to-end data engineering pipelines, feature preparation, and automated dataset validation
+- Collaborative feature store and schema quality enforcement
 """
 
 from __future__ import annotations

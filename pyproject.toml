@@ -3,9 +3,9 @@ requires = ["setuptools>=68.0", "wheel"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "ubl-banking-ds-platform"
+name = "enterprise-banking-ds-platform"
 version = "1.0.0"
-description = "Enterprise Banking Data Science, Forecasting, Customer Segmentation, Anomaly Detection & Controlled GenAI BI Platform for UBL"
+description = "Enterprise Banking Data Science, Forecasting, Customer Segmentation, Anomaly Detection & Controlled GenAI BI Platform"
 readme = "README.md"
 requires-python = ">=3.11"
 license = {text = "MIT"}

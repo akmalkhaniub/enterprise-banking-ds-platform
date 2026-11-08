@@ -1,9 +1,9 @@
 """Pillar 2: Customer 360 Clustering/Segmentation & Unsupervised/Statistical Transaction Anomaly Detection.
 
-Satisfies UBL JD Requirements:
-- "Build, validate and maintain machine learning and AI models for forecasting, segmentation, bench-marking and anomaly detection"
-- "Practical experience with time-series forecasting, regression and clustering"
-- "Experience with large customer or transactional datasets in any industry (e.g. telecom, fintech, e-commerce, retail, banking)"
+Core Capabilities:
+- Machine learning and AI models for customer segmentation and transaction anomaly detection
+- RFM & behavioral clustering (K-Means + Gaussian Mixture Models) with Silhouette/Davies-Bouldin validation
+- High-volume retail, SME, and digital banking transaction monitoring
 """
 
 from __future__ import annotations
@@ -29,8 +29,8 @@ from sklearn.preprocessing import RobustScaler, StandardScaler
 
 SEGMENT_ACTION_PLAYBOOK: Dict[str, str] = {
     "High_Value_SME_Commercial": "Assign dedicated SME Relationship Manager; pitch Working Capital Finance & POS merchant acquiring fee waiver.",
-    "Affluent_HNW_Wealth": "Priority Banking upgrade; pitch UBL Ameen / Mutual Fund wealth products and Premier multi-currency Visa Infinite.",
-    "Digital_Active_Growth": "Pre-approve instant digital personal loan / BNPL credit line via UBL Digital App push notification.",
+    "Affluent_HNW_Wealth": "Priority Banking upgrade; pitch Islamic / Mutual Fund wealth products and Premier multi-currency Visa Infinite.",
+    "Digital_Active_Growth": "Pre-approve instant digital personal loan / BNPL credit line via Mobile Banking App push notification.",
     "Salaried_Core_Retail": "Cross-sell Bancassurance & Auto-Invest SIP; incentivize utility bill auto-debit for sticky CASA float.",
     "Dormant_Churn_Risk": "Trigger automated 90-day dormancy win-back campaign (zero-fee RAAST cashback + RM outbound call).",
 }

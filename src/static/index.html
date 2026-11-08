@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>UBL Executive Banking Intelligence & Data Science Console</title>
+  <title>Enterprise Banking Intelligence & Data Science Console</title>
   <style>
     :root {
       --bg-page: #f8fafc;
@@ -419,9 +419,9 @@
   <header>
     <div class="nav-container">
       <div class="brand">
-        <div class="brand-mark">UBL</div>
+        <div class="brand-mark">EBI</div>
         <div>
-          <div class="brand-title">Banking Data Science & Decision Intelligence</div>
+          <div class="brand-title">Enterprise Banking Data Science &amp; Decision Intelligence</div>
           <div class="brand-subtitle">Treasury Forecasting • Branch OLS Benchmarking • Customer 360 RFM • AML Isolation Forest</div>
         </div>
       </div>
@@ -652,7 +652,7 @@
         <div class="card-header">
           <div>
             <div class="card-title">Power BI Project (`.pbip` / TMDL Semantic Model) &amp; Star-Schema Exports</div>
-            <div class="card-subtitle">Direct CSV &amp; Power BI Desktop Integration (`bi/UBLBankingExecutiveIntelligence.pbip`)</div>
+            <div class="card-subtitle">Direct CSV &amp; Power BI Desktop Integration (`bi/BankingExecutiveIntelligence.pbip`)</div>
           </div>
           <span class="badge badge-accent">Power BI + Tableau Ready</span>
         </div>
@@ -696,7 +696,7 @@
     // Theme Persistence (Light / Dark Mode)
     const rootEl = document.documentElement;
     const themeBtn = document.getElementById("themeToggle");
-    const savedTheme = localStorage.getItem("ubl_ds_theme") || "light";
+    const savedTheme = localStorage.getItem("ebi_ds_theme") || "light";
     if (savedTheme === "dark") {
       rootEl.setAttribute("data-theme", "dark");
       themeBtn.textContent = "☀️ Light Mode";
@@ -705,7 +705,7 @@
       const current = rootEl.getAttribute("data-theme") === "dark" ? "dark" : "light";
       const next = current === "dark" ? "light" : "dark";
       rootEl.setAttribute("data-theme", next);
-      localStorage.setItem("ubl_ds_theme", next);
+      localStorage.setItem("ebi_ds_theme", next);
       themeBtn.textContent = next === "dark" ? "☀️ Light Mode" : "🌙 Dark Mode";
     });
 

@@ -1,10 +1,9 @@
 """Pillar 1: Time-Series Forecasting, Regression, Branch Benchmarking & Hypothesis Testing.
 
-Satisfies UBL JD Requirements:
-- "Build, validate and maintain machine learning and AI models for forecasting, segmentation, bench-marking and anomaly detection"
-- "Practical experience with time-series forecasting, regression and clustering"
-- "3–5 years of hands-on experience building machine learning and statistical models in Python (pandas, scikit-learn, stats models or similar)"
-- "Translate business questions into analytical approaches and test hypotheses with data"
+Core Capabilities:
+- Machine learning and statistical models for forecasting, segmentation, benchmarking, and anomaly detection
+- Time-series forecasting (SARIMAX + Gradient Boosting), OLS/Ridge regression, and clustering
+- Parametric & non-parametric hypothesis testing in Python (pandas, scikit-learn, statsmodels, scipy)
 """
 
 from __future__ import annotations

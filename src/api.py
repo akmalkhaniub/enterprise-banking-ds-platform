@@ -1,4 +1,4 @@
-"""FastAPI Backend & Executive Banking Intelligence Console for UBL Data Science Platform."""
+"""FastAPI Backend & Executive Banking Intelligence Console for Enterprise Banking Data Science Platform."""
 
 from __future__ import annotations
 
@@ -40,7 +40,7 @@ async def lifespan(app: FastAPI):
 
 
 app = FastAPI(
-    title="UBL Banking Data Science & Executive Intelligence Platform",
+    title="Enterprise Banking Data Science & Executive Intelligence Platform",
     description=(
         "End-to-end banking forecasting (SARIMAX + GBR), branch OLS benchmarking, "
         "Customer 360 RFM clustering, Isolation Forest AML anomaly detection, "
@@ -59,7 +59,7 @@ class WhatIfLiquidityRequest(BaseModel):
 
 @app.get("/healthz")
 def healthz() -> Dict[str, str]:
-    return {"status": "ok", "service": "ubl-banking-ds-platform"}
+    return {"status": "ok", "service": "enterprise-banking-ds-platform"}
 
 
 @app.get("/api/v1/dashboard-bundle")

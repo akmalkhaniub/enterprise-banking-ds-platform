@@ -36,7 +36,7 @@ def run_full_banking_ds_pipeline(
     n_transactions: int = 45000,
     persist_to_disk: bool = True,
 ) -> Dict[str, Any]:
-    """Execute the full UBL Data Science pipeline from raw generation -> SQL Feature Store -> ML Models -> BI Mart."""
+    """Execute the full Enterprise Banking Data Science pipeline from raw generation -> SQL Feature Store -> ML Models -> BI Mart."""
     # 1. Generate realistic banking datasets
     datasets = generate_banking_dataset(
         seed=seed,

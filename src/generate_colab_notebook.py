@@ -7,7 +7,7 @@ from pathlib import Path
 
 
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
-NOTEBOOK_PATH = PROJECT_ROOT / "notebooks" / "01_UBL_End_to_End_Banking_Experiments.ipynb"
+NOTEBOOK_PATH = PROJECT_ROOT / "notebooks" / "01_End_to_End_Banking_Experiments.ipynb"
 SNAPSHOT_PATH = PROJECT_ROOT / "data" / "artifacts" / "pipeline_snapshot.json"
 
 
@@ -16,20 +16,19 @@ def build_notebook() -> None:
     kpis = snap["kpis"]
     fc_models = snap["forecasting"]["metrics"]["models"]
     hyps = snap["hypothesis_testing"]["hypothesis_tests"]
-    segs = snap["customer_segmentation"]["segment_profiles"]
 
     cells = [
         {
             "cell_type": "markdown",
             "metadata": {"id": "header_cell"},
             "source": [
-                "# 🏦 UBL Banking Data Science — End-to-End Experiments (Colab & Kaggle Ready)\n",
+                "# 🏦 Enterprise Banking Data Science — End-to-End Experiments (Colab & Kaggle Ready)\n",
                 "\n",
-                "[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/akmalkhaniub/ubl-banking-ds-platform/blob/main/notebooks/01_UBL_End_to_End_Banking_Experiments.ipynb)\n",
-                "[![Kaggle](https://kaggle.com/static/images/open-in-kaggle.svg)](https://kaggle.com/kernels/welcome?src=https://github.com/akmalkhaniub/ubl-banking-ds-platform/blob/main/notebooks/01_UBL_End_to_End_Banking_Experiments.ipynb)\n",
+                "[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/akmalkhaniub/enterprise-banking-ds-platform/blob/main/notebooks/01_End_to_End_Banking_Experiments.ipynb)\n",
+                "[![Kaggle](https://kaggle.com/static/images/open-in-kaggle.svg)](https://kaggle.com/kernels/welcome?src=https://github.com/akmalkhaniub/enterprise-banking-ds-platform/blob/main/notebooks/01_End_to_End_Banking_Experiments.ipynb)\n",
                 "\n",
                 "**Author:** Akmal Khan, PhD  \n",
-                "**Role Alignment:** United Bank Limited (UBL) Data Scientist — *Forecasting, Segmentation, Branch Benchmarking, Anomaly Detection, Analytical SQL & Controlled Enterprise GenAI*\n",
+                "**Domain Focus:** Commercial & Retail Banking Data Science — *Time-Series Forecasting, Customer 360 Segmentation, Peer-Adjusted Branch Benchmarking, AML Anomaly Detection, Analytical SQL & Controlled Enterprise GenAI*\n",
                 "\n",
                 "---\n",
                 "### 🧪 Experiment Roadmap in This Notebook\n",
@@ -51,7 +50,7 @@ def build_notebook() -> None:
                     "name": "stdout",
                     "output_type": "stream",
                     "text": [
-                        "Environment ready! Running inside ubl-banking-ds-platform.\n"
+                        "Environment ready! Running inside enterprise-banking-ds-platform.\n"
                     ],
                 }
             ],
@@ -61,14 +60,14 @@ def build_notebook() -> None:
                 "from pathlib import Path\n",
                 "\n",
                 "if not Path('src/pipeline_runner.py').exists() and not Path('../src/pipeline_runner.py').exists():\n",
-                "    !git clone https://github.com/akmalkhaniub/ubl-banking-ds-platform.git\n",
-                "    os.chdir('ubl-banking-ds-platform')\n",
+                "    !git clone https://github.com/akmalkhaniub/enterprise-banking-ds-platform.git\n",
+                "    os.chdir('enterprise-banking-ds-platform')\n",
                 "    !pip install -q duckdb statsmodels scikit-learn pandas scipy pydantic\n",
                 "elif Path('../src/pipeline_runner.py').exists():\n",
                 "    os.chdir('..')\n",
                 "\n",
                 "sys.path.insert(0, str(Path.cwd()))\n",
-                "print('Environment ready! Running inside ubl-banking-ds-platform.')"
+                "print('Environment ready! Running inside enterprise-banking-ds-platform.')"
             ],
         },
         {
@@ -76,7 +75,7 @@ def build_notebook() -> None:
             "metadata": {"id": "exp1_md"},
             "source": [
                 "## 📊 Experiment 1: Analytical SQL Feature Engineering & Data Quality Gates (`DuckDB`)\n",
-                "We generate **30 UBL branches**, **1,200 CASA & SME customer accounts**, **180 days of daily branch liquidity**, and **45,000+ RAAST / IBFT / ATM / POS transactions**, then validate them with 4 automated SQL Data Quality assertions."
+                "We generate **30 commercial bank branches**, **1,200 CASA & SME customer accounts**, **180 days of daily branch liquidity**, and **45,000+ RAAST / IBFT / ATM / POS transactions**, then validate them with 4 automated SQL Data Quality assertions."
             ],
         },
         {
@@ -235,7 +234,7 @@ def build_notebook() -> None:
             "metadata": {"id": "exp5_md"},
             "source": [
                 "## 🛡️ Experiment 5: Controlled Enterprise GenAI Narrator & PII Redaction Guardrail\n",
-                "We verify that Pakistani CNICs (`42101-1234567-1`), IBANs (`PK36UNIL...`), and raw customer IDs are automatically masked before prompt synthesis, and generate the structured ALCO & Retail Executive Brief."
+                "We verify that National IDs (`42101-1234567-1`), IBANs (`PK36ABCD...`), and raw customer IDs are automatically masked before prompt synthesis, and generate the structured ALCO & Retail Executive Brief."
             ],
         },
         {
@@ -257,7 +256,7 @@ def build_notebook() -> None:
                 "from src.genai_narrator import sanitize_pii_text\n",
                 "from src.pipeline_runner import run_full_banking_ds_pipeline\n",
                 "\n",
-                "sample_raw = 'Customer CUST-200145 with CNIC 42101-1234567-1 and IBAN PK36UNIL0000001123456789'\n",
+                "sample_raw = 'Customer CUST-200145 with CNIC 42101-1234567-1 and IBAN PK36ABCD0000001123456789'\n",
                 "print('Sanitized Sample:', sanitize_pii_text(sample_raw))\n",
                 "\n",
                 "bundle = run_full_banking_ds_pipeline(persist_to_disk=False)\n",
@@ -282,7 +281,7 @@ def build_notebook() -> None:
             },
             "colab": {
                 "provenance": [],
-                "name": "01_UBL_End_to_End_Banking_Experiments.ipynb",
+                "name": "01_End_to_End_Banking_Experiments.ipynb",
             },
         },
         "nbformat": 4,

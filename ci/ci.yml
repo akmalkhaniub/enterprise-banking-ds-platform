@@ -1,4 +1,4 @@
-name: UBL Banking Data Science & BI Quality Gate
+name: Enterprise Banking Data Science & BI Quality Gate
 
 on:
   push:
