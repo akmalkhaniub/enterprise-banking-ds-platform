@@ -5,6 +5,8 @@
 [![Statsmodels](https://img.shields.io/badge/Econometrics-statsmodels-2C5BB4?style=flat)](https://www.statsmodels.org)
 [![Scikit-Learn](https://img.shields.io/badge/ML-scikit--learn-F7931E?style=flat&logo=scikit-learn)](https://scikit-learn.org)
 [![Power BI](https://img.shields.io/badge/BI-Power%20BI%20(.pbip%20%2F%20TMDL)-F2C811?style=flat)](https://powerbi.microsoft.com)
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/akmalkhaniub/ubl-banking-ds-platform/blob/main/notebooks/01_UBL_End_to_End_Banking_Experiments.ipynb)
+[![Kaggle](https://kaggle.com/static/images/open-in-kaggle.svg)](https://kaggle.com/kernels/welcome?src=https://github.com/akmalkhaniub/ubl-banking-ds-platform/blob/main/notebooks/01_UBL_End_to_End_Banking_Experiments.ipynb)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 
 > **Production-grade banking data science, statistical econometrics, analytical SQL feature store, and Power BI / Tableau Star-Schema intelligence platform engineered specifically for United Bank Limited (UBL) Data Science workloads.**
