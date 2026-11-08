@@ -1,0 +1,15 @@
+{
+  "id": "akmalshahbaz/exp-d-causal-uplift-modeling-double-ml",
+  "title": "Exp D Causal Uplift Modeling Double ML",
+  "code_file": "exp_d_causal_uplift_dml.ipynb",
+  "language": "python",
+  "kernel_type": "notebook",
+  "is_private": "false",
+  "enable_gpu": "false",
+  "enable_tpu": "false",
+  "enable_internet": "true",
+  "dataset_sources": [],
+  "competition_sources": [],
+  "kernel_sources": [],
+  "model_sources": []
+}

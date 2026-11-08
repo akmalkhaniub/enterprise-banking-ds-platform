@@ -1,0 +1,15 @@
+{
+  "id": "akmalshahbaz/exp-c-grandmaster-tabular-stacking-calibration",
+  "title": "Exp C Grandmaster Tabular Stacking Calibration",
+  "code_file": "exp_c_tabular_stacking.ipynb",
+  "language": "python",
+  "kernel_type": "notebook",
+  "is_private": "false",
+  "enable_gpu": "false",
+  "enable_tpu": "false",
+  "enable_internet": "true",
+  "dataset_sources": [],
+  "competition_sources": [],
+  "kernel_sources": [],
+  "model_sources": []
+}

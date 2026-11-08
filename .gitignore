@@ -22,3 +22,5 @@ htmlcov/
 *.duckdb.wal
 .DS_Store
 Thumbs.db
+kaggle_outputs/
+catboost_info/
