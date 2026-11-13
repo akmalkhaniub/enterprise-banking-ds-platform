@@ -2254,7 +2254,7 @@
         "is_odd_hour": 1,
         "is_near_aml_reporting_threshold": 0,
         "customer_same_day_txn_count": 3,
-        "customer_same_day_volume_pkr": 6081709.17,
+        "customer_same_day_volume_pkr": 6081709.170000001,
         "anomaly_risk_score": 97.91,
         "model_anomaly_flag": 1,
         "explainable_alert_reason": "DISPROPORTIONATE_TO_DECLARED_INCOME_ODD_HOUR"
@@ -2578,7 +2578,7 @@
         "is_odd_hour": 0,
         "is_near_aml_reporting_threshold": 1,
         "customer_same_day_txn_count": 3,
-        "customer_same_day_volume_pkr": 2857725.0000000005,
+        "customer_same_day_volume_pkr": 2857725.0,
         "anomaly_risk_score": 90.31,
         "model_anomaly_flag": 1,
         "explainable_alert_reason": "AML_STRUCTURING_NEAR_2.5M_THRESHOLD"
@@ -3262,7 +3262,7 @@
   },
   "executive_brief": {
     "brief_id": "EXEC-BRIEF-2026-Q4",
-    "generated_at_utc": "2026-11-08T21:57:24Z",
+    "generated_at_utc": "2026-11-11T16:04:54Z",
     "governance_mode": "DETERMINISTIC_SCHEMA_GROUNDED_ZERO_HALLUCINATION",
     "pii_sanitization_passed": true,
     "numeric_grounding_verified": true,
