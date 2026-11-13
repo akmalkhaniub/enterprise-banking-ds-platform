@@ -1,0 +1,561 @@
+{
+  "title": "Enterprise Multi-Domain Banking & AML Benchmark",
+  "id": "akmalshahbaz/enterprise-banking-and-aml-benchmark",
+  "subtitle": "Banking star-schema: branch efficiency, RFM segments, liquidity & AML alerts",
+  "description": "# Enterprise Multi-Domain Banking, Fraud & AML Benchmark\n\n## Overview & Context\nThis synthetic star-schema benchmark supports **time-series treasury forecasting**, **econometric peer branch benchmarking**, **Customer 360 RFM segmentation**, **AML/account-takeover anomaly triage**, and **Power BI / SQL analytics**. Generated from the deterministic analytical pipeline in [`enterprise-banking-ds-platform`](https://github.com/akmalkhaniub/enterprise-banking-ds-platform), the corpus models **30 network branches** across 10 cities, **1,200 customer accounts**, **210 days of ATM cash demand and deposit liquidity** (150 historical, 30 validation backtest, and 30 forward forecast days), **679 prioritized anomaly queue alerts** isolated from 45,000+ underlying simulated multi-channel transactions, and **4 executive ALCO/compliance action briefs**.\n\n---\n\n## Files Included (5 Star-Schema CSV Tables)\n\n### 1. `DimBranchBenchmark.csv` (30 rows × 30 columns)\nBranch-level operational inputs, 180-day deposit/ATM volumes, OLS expected net liquidity, residual efficiency index, and benchmark status (`OUTPERFORMING_BENCHMARK`: 7, `ON_TARGET_PEER_BAND`: 13, `UNDERPERFORMING_ACTION_NEEDED`: 10) across 10 Pakistani cities.\n- **Keys & Dimensions:** `branch_id`, `branch_name`, `city`, `province`, `branch_tier`, `digital_onboarding_campaign`\n- **Capacity & Book:** `staff_count`, `atm_count`, `catchment_population`, `monthly_opex_pkr`, `active_customer_accounts`, `total_casa_book_pkr`, `avg_casa_per_customer_pkr`, `avg_products_per_customer`, `digital_enrollment_rate`\n- **180-Day Flows & OLS Benchmarks:** `total_deposit_inflow_180d_pkr`, `total_deposit_outflow_180d_pkr`, `total_net_liquidity_180d_pkr`, `avg_daily_net_liquidity_pkr`, `total_atm_demand_180d_pkr`, `avg_daily_atm_demand_pkr`, `total_digital_txns_180d`, `cost_to_net_deposit_ratio`, `net_deposit_per_staff_pkr`, `expected_net_liquidity_180d_pkr`, `value_add_residual_pkr`, `efficiency_index_pct`, `residual_zscore`, `benchmark_status`, `efficiency_rank`\n\n### 2. `DimCustomerSegment.csv` (1,200 rows × 27 columns)\nCustomer 360 account profile, 180-day RFM behavioral features, unsupervised K-Means/GMM cluster assignments, estimated annual CLV, and prescriptive CRM actions.\n- **Profile:** `customer_id`, `branch_id`, `account_type`, `latent_archetype`, `tenure_months`, `declared_monthly_income_pkr`, `current_casa_balance_pkr`, `products_count`, `internal_credit_score`, `mobile_app_enrolled`, `kyc_risk_tier`\n- **180-Day RFM & Behavior:** `recency_days`, `txn_frequency_180d`, `monetary_total_volume_pkr`, `avg_ticket_pkr`, `std_ticket_pkr`, `max_ticket_pkr`, `digital_txn_share`, `odd_hour_txn_share`, `total_credit_inflow_pkr`, `total_debit_outflow_pkr`, `volume_to_6m_income_ratio`\n- **Segmentation & CRM:** `cluster_id`, `cluster_assignment_confidence`, `customer_segment`, `recommended_next_best_action`, `estimated_annual_clv_pkr`\n\n### 3. `FactTransactionAnomaly.csv` (679 rows × 25 columns)\nHigh-risk flagged alert queue (`model_anomaly_flag == 1`) isolated from the full 45,000+ transaction ledger (`642` true injected anomalies across `INCOME_DISPROPORTIONATE_SPIKE` (242), `MIDNIGHT_HIGH_VALUE_DRAIN` (209), and `AML_THRESHOLD_STRUCTURING` (191), plus `37` `NORMAL` false positives for precision/triage analysis).\n- **Event & Context:** `transaction_id`, `customer_id`, `branch_id`, `txn_timestamp`, `txn_date`, `txn_hour`, `channel`, `direction`, `amount_pkr`\n- **Customer Baselines & Risk Rules:** `declared_monthly_income_pkr`, `current_casa_balance_pkr`, `kyc_risk_tier`, `cust_mean_amt`, `cust_std_amt`, `customer_amount_zscore`, `amount_to_monthly_income_ratio`, `is_odd_hour`, `is_near_aml_reporting_threshold`, `customer_same_day_txn_count`, `customer_same_day_volume_pkr`\n- **Labels & Model Outputs:** `ground_truth_anomaly`, `anomaly_pattern_code`, `anomaly_risk_score`, `model_anomaly_flag`, `explainable_alert_reason`\n\n### 4. `FactLiquidityForecast.csv` (210 rows × 10 columns)\nDaily network-wide ATM cash demand and deposit inflow series spanning `2026-05-01` through `2026-11-26` (`150` `HISTORICAL_ACTUAL`, `30` `VALIDATION_BACKTEST`, `30` `FUTURE_FORECAST_30D`), complete with 95% confidence bounds and calendar flags (`is_salary_window`, `is_weekend`).\n- **Columns:** `date`, `period_type`, `actual_atm_cash_demand_pkr`, `forecast_atm_cash_demand_pkr`, `forecast_atm_lower_95ci_pkr`, `forecast_atm_upper_95ci_pkr`, `actual_deposit_inflow_pkr`, `forecast_deposit_inflow_pkr`, `is_salary_window`, `is_weekend`\n\n### 5. `FactExecutiveRecommendation.csv` (4 rows × 7 columns)\nSchema-validated ALCO, branch network, CRM, and AML compliance action recommendations grounded in quantitative evidence.\n- **Columns:** `recommendation_id`, `domain`, `priority`, `headline`, `quantified_evidence`, `recommended_action`, `expected_business_impact`\n\n---\n\n## Use Cases & Source\n- **AML / False-Positive Alert Triage:** Benchmark precision/ranking rules differentiating the 642 true anomalies from the 37 benign `NORMAL` alerts in `FactTransactionAnomaly.csv`.\n- **Treasury Cash Replenishment:** Evaluate salary-window surge accuracy across the 30-day `VALIDATION_BACKTEST` horizon in `FactLiquidityForecast.csv`.\n- **Econometric Branch Efficiency:** Audit `value_add_residual_pkr` and `efficiency_index_pct` across capacity covariates in `DimBranchBenchmark.csv`.\n- **Source Repository:** https://github.com/akmalkhaniub/enterprise-banking-ds-platform\n- **License:** CC0-1.0 (Public Domain — synthetic benchmark data).\n",
+  "licenses": [
+    {
+      "name": "CC0-1.0"
+    }
+  ],
+  "keywords": [
+    "finance",
+    "business",
+    "data analytics",
+    "time series analysis",
+    "data visualization"
+  ],
+  "expectedUpdateFrequency": "quarterly",
+  "userSpecifiedSources": "https://github.com/akmalkhaniub/enterprise-banking-ds-platform",
+  "resources": [
+    {
+      "path": "DimBranchBenchmark.csv",
+      "description": "30-branch capacity, 180-day deposit/ATM volumes, and OLS peer-adjusted efficiency benchmarks.",
+      "schema": {
+        "fields": [
+          {
+            "name": "branch_id",
+            "type": "string",
+            "description": "Unique branch identifier (e.g., BNK-BR-1018)."
+          },
+          {
+            "name": "branch_name",
+            "type": "string",
+            "description": "Descriptive branch name and city sub-location."
+          },
+          {
+            "name": "city",
+            "type": "string",
+            "description": "City where the branch operates (10 cities)."
+          },
+          {
+            "name": "province",
+            "type": "string",
+            "description": "Province or administrative territory."
+          },
+          {
+            "name": "branch_tier",
+            "type": "string",
+            "description": "Urban, Metro, or Tier classification of the branch."
+          },
+          {
+            "name": "staff_count",
+            "type": "integer",
+            "description": "Full-time branch headcount."
+          },
+          {
+            "name": "atm_count",
+            "type": "integer",
+            "description": "Number of deployed ATMs at the branch."
+          },
+          {
+            "name": "catchment_population",
+            "type": "integer",
+            "description": "Estimated addressable local catchment population."
+          },
+          {
+            "name": "monthly_opex_pkr",
+            "type": "number",
+            "description": "Monthly branch operating expenditure in PKR."
+          },
+          {
+            "name": "digital_onboarding_campaign",
+            "type": "boolean",
+            "description": "Whether an active digital onboarding campaign ran at the branch."
+          },
+          {
+            "name": "active_customer_accounts",
+            "type": "integer",
+            "description": "Count of active customer accounts assigned to the branch."
+          },
+          {
+            "name": "total_casa_book_pkr",
+            "type": "number",
+            "description": "Total Current and Savings Account (CASA) deposits in PKR."
+          },
+          {
+            "name": "avg_casa_per_customer_pkr",
+            "type": "number",
+            "description": "Average CASA balance per active customer in PKR."
+          },
+          {
+            "name": "avg_products_per_customer",
+            "type": "number",
+            "description": "Mean financial product holdings per branch customer."
+          },
+          {
+            "name": "digital_enrollment_rate",
+            "type": "number",
+            "description": "Fraction of branch customers enrolled on mobile/digital channels."
+          },
+          {
+            "name": "total_deposit_inflow_180d_pkr",
+            "type": "number",
+            "description": "Cumulative 180-day credit deposit inflow in PKR."
+          },
+          {
+            "name": "total_deposit_outflow_180d_pkr",
+            "type": "number",
+            "description": "Cumulative 180-day debit outflow in PKR."
+          },
+          {
+            "name": "total_net_liquidity_180d_pkr",
+            "type": "number",
+            "description": "180-day net deposit mobilization (inflow minus outflow) in PKR."
+          },
+          {
+            "name": "avg_daily_net_liquidity_pkr",
+            "type": "number",
+            "description": "Mean daily net liquidity contribution in PKR."
+          },
+          {
+            "name": "total_atm_demand_180d_pkr",
+            "type": "number",
+            "description": "Total 180-day ATM cash dispensing volume in PKR."
+          },
+          {
+            "name": "avg_daily_atm_demand_pkr",
+            "type": "number",
+            "description": "Mean daily ATM cash demand in PKR."
+          },
+          {
+            "name": "total_digital_txns_180d",
+            "type": "number",
+            "description": "Total digital transaction volume handled over 180 days."
+          },
+          {
+            "name": "cost_to_net_deposit_ratio",
+            "type": "number",
+            "description": "Operating cost efficiency ratio relative to net deposit mobilization."
+          },
+          {
+            "name": "net_deposit_per_staff_pkr",
+            "type": "number",
+            "description": "180-day net deposit liquidity mobilized per staff member in PKR."
+          },
+          {
+            "name": "expected_net_liquidity_180d_pkr",
+            "type": "number",
+            "description": "OLS peer-adjusted expected 180-day net liquidity in PKR."
+          },
+          {
+            "name": "value_add_residual_pkr",
+            "type": "number",
+            "description": "Actual minus OLS-expected 180-day net liquidity residual in PKR."
+          },
+          {
+            "name": "efficiency_index_pct",
+            "type": "number",
+            "description": "Peer efficiency index percentage (Actual / Expected * 100)."
+          },
+          {
+            "name": "residual_zscore",
+            "type": "number",
+            "description": "Standardized OLS residual z-score across the 30-branch network."
+          },
+          {
+            "name": "benchmark_status",
+            "type": "string",
+            "description": "Peer band classification (OUTPERFORMING_BENCHMARK, ON_TARGET_PEER_BAND, UNDERPERFORMING_ACTION_NEEDED)."
+          },
+          {
+            "name": "efficiency_rank",
+            "type": "integer",
+            "description": "Ordinally ranked branch efficiency position (1 = highest)."
+          }
+        ]
+      }
+    },
+    {
+      "path": "DimCustomerSegment.csv",
+      "description": "1,200-customer 180-day RFM profile, K-Means/GMM segment assignments, CLV, and CRM next-best-action.",
+      "schema": {
+        "fields": [
+          {
+            "name": "customer_id",
+            "type": "string",
+            "description": "Unique customer account identifier (e.g., CUST-200001)."
+          },
+          {
+            "name": "branch_id",
+            "type": "string",
+            "description": "Foreign key linking the customer to DimBranchBenchmark.csv."
+          },
+          {
+            "name": "account_type",
+            "type": "string",
+            "description": "Primary deposit product type (e.g., Savings_PLS, Current)."
+          },
+          {
+            "name": "latent_archetype",
+            "type": "string",
+            "description": "Underlying synthetic persona used in simulation."
+          },
+          {
+            "name": "tenure_months",
+            "type": "integer",
+            "description": "Customer relationship tenure in months."
+          },
+          {
+            "name": "declared_monthly_income_pkr",
+            "type": "number",
+            "description": "Customer declared monthly income in PKR."
+          },
+          {
+            "name": "current_casa_balance_pkr",
+            "type": "number",
+            "description": "Current CASA deposit balance in PKR."
+          },
+          {
+            "name": "products_count",
+            "type": "integer",
+            "description": "Number of active banking products held by the customer."
+          },
+          {
+            "name": "internal_credit_score",
+            "type": "integer",
+            "description": "Simulated internal behavioral credit score."
+          },
+          {
+            "name": "mobile_app_enrolled",
+            "type": "boolean",
+            "description": "Whether the customer has enrolled in mobile banking."
+          },
+          {
+            "name": "kyc_risk_tier",
+            "type": "string",
+            "description": "AML/KYC risk tier classification (LOW, MEDIUM, HIGH)."
+          },
+          {
+            "name": "recency_days",
+            "type": "integer",
+            "description": "Days elapsed since the customer's most recent transaction."
+          },
+          {
+            "name": "txn_frequency_180d",
+            "type": "integer",
+            "description": "Total number of transactions recorded over the 180-day window."
+          },
+          {
+            "name": "monetary_total_volume_pkr",
+            "type": "number",
+            "description": "Cumulative 180-day transaction volume in PKR."
+          },
+          {
+            "name": "avg_ticket_pkr",
+            "type": "number",
+            "description": "Mean transaction amount per event in PKR."
+          },
+          {
+            "name": "std_ticket_pkr",
+            "type": "number",
+            "description": "Standard deviation of customer transaction amounts in PKR."
+          },
+          {
+            "name": "max_ticket_pkr",
+            "type": "number",
+            "description": "Maximum single transaction size observed over 180 days in PKR."
+          },
+          {
+            "name": "digital_txn_share",
+            "type": "number",
+            "description": "Share of transactions executed on digital channels (0-1)."
+          },
+          {
+            "name": "odd_hour_txn_share",
+            "type": "number",
+            "description": "Share of transactions occurring during late/odd hours (0-1)."
+          },
+          {
+            "name": "total_credit_inflow_pkr",
+            "type": "number",
+            "description": "Total 180-day credit inflow amount in PKR."
+          },
+          {
+            "name": "total_debit_outflow_pkr",
+            "type": "number",
+            "description": "Total 180-day debit outflow amount in PKR."
+          },
+          {
+            "name": "volume_to_6m_income_ratio",
+            "type": "number",
+            "description": "Ratio of 180-day volume to 6 months of declared income."
+          },
+          {
+            "name": "cluster_id",
+            "type": "integer",
+            "description": "Numeric cluster ID assigned by K-Means/GMM segmentation."
+          },
+          {
+            "name": "cluster_assignment_confidence",
+            "type": "number",
+            "description": "Posterior assignment confidence (GMM/cluster probability)."
+          },
+          {
+            "name": "customer_segment",
+            "type": "string",
+            "description": "Named actionable segment (5 segments across retail, digital, SME, HNW, churn risk)."
+          },
+          {
+            "name": "recommended_next_best_action",
+            "type": "string",
+            "description": "Prescriptive CRM outreach recommendation for the segment."
+          },
+          {
+            "name": "estimated_annual_clv_pkr",
+            "type": "number",
+            "description": "Estimated 12-month Customer Lifetime Value in PKR."
+          }
+        ]
+      }
+    },
+    {
+      "path": "FactTransactionAnomaly.csv",
+      "description": "679 prioritized anomaly queue alerts (642 injected AML/ATO/spike anomalies + 37 normal alerts) from 45K+ transactions.",
+      "schema": {
+        "fields": [
+          {
+            "name": "transaction_id",
+            "type": "string",
+            "description": "Unique transaction alert identifier (e.g., TXN-5014633)."
+          },
+          {
+            "name": "customer_id",
+            "type": "string",
+            "description": "Foreign key linking to DimCustomerSegment.csv."
+          },
+          {
+            "name": "branch_id",
+            "type": "string",
+            "description": "Foreign key linking to DimBranchBenchmark.csv."
+          },
+          {
+            "name": "txn_timestamp",
+            "type": "string",
+            "description": "ISO-formatted transaction timestamp (YYYY-MM-DD HH:MM:SS)."
+          },
+          {
+            "name": "txn_date",
+            "type": "string",
+            "description": "Calendar date of the transaction (YYYY-MM-DD)."
+          },
+          {
+            "name": "txn_hour",
+            "type": "integer",
+            "description": "Hour of day (0-23) when the transaction occurred."
+          },
+          {
+            "name": "channel",
+            "type": "string",
+            "description": "Transaction channel (e.g., RAAST_P2P, IBFT, ATM, POS_MERCHANT)."
+          },
+          {
+            "name": "direction",
+            "type": "string",
+            "description": "Transaction direction (DEBIT or CREDIT)."
+          },
+          {
+            "name": "amount_pkr",
+            "type": "number",
+            "description": "Monetary amount of the transaction in PKR."
+          },
+          {
+            "name": "ground_truth_anomaly",
+            "type": "integer",
+            "description": "Binary ground-truth anomaly indicator (1 = injected anomaly, 0 = benign alert)."
+          },
+          {
+            "name": "anomaly_pattern_code",
+            "type": "string",
+            "description": "Injected pattern label (INCOME_DISPROPORTIONATE_SPIKE, MIDNIGHT_HIGH_VALUE_DRAIN, AML_THRESHOLD_STRUCTURING, NORMAL)."
+          },
+          {
+            "name": "declared_monthly_income_pkr",
+            "type": "number",
+            "description": "Customer declared monthly income at alert time in PKR."
+          },
+          {
+            "name": "current_casa_balance_pkr",
+            "type": "number",
+            "description": "Customer CASA balance snapshot in PKR."
+          },
+          {
+            "name": "kyc_risk_tier",
+            "type": "string",
+            "description": "Customer KYC risk tier (LOW, MEDIUM, HIGH)."
+          },
+          {
+            "name": "cust_mean_amt",
+            "type": "number",
+            "description": "Customer historical mean transaction amount in PKR."
+          },
+          {
+            "name": "cust_std_amt",
+            "type": "number",
+            "description": "Customer historical transaction amount standard deviation in PKR."
+          },
+          {
+            "name": "customer_amount_zscore",
+            "type": "number",
+            "description": "Standardized transaction amount z-score relative to customer baseline."
+          },
+          {
+            "name": "amount_to_monthly_income_ratio",
+            "type": "number",
+            "description": "Transaction amount divided by declared monthly income."
+          },
+          {
+            "name": "is_odd_hour",
+            "type": "integer",
+            "description": "Binary flag indicating midnight/off-hours execution (1/0)."
+          },
+          {
+            "name": "is_near_aml_reporting_threshold",
+            "type": "integer",
+            "description": "Binary flag indicating proximity to the PKR 2.5M AML threshold."
+          },
+          {
+            "name": "customer_same_day_txn_count",
+            "type": "integer",
+            "description": "Same-day cumulative transaction count for the customer."
+          },
+          {
+            "name": "customer_same_day_volume_pkr",
+            "type": "number",
+            "description": "Same-day cumulative volume for the customer in PKR."
+          },
+          {
+            "name": "anomaly_risk_score",
+            "type": "number",
+            "description": "Composite ensemble anomaly risk score (0-100)."
+          },
+          {
+            "name": "model_anomaly_flag",
+            "type": "integer",
+            "description": "Binary detector flag (1 for all 679 prioritized alerts in this queue)."
+          },
+          {
+            "name": "explainable_alert_reason",
+            "type": "string",
+            "description": "Human-readable primary trigger reason for compliance triage."
+          }
+        ]
+      }
+    },
+    {
+      "path": "FactLiquidityForecast.csv",
+      "description": "210-day ATM cash demand and deposit inflow series with SARIMAX+GBR backtest and 30-day forward bounds.",
+      "schema": {
+        "fields": [
+          {
+            "name": "date",
+            "type": "string",
+            "description": "Calendar date (YYYY-MM-DD) from 2026-05-01 through 2026-11-26."
+          },
+          {
+            "name": "period_type",
+            "type": "string",
+            "description": "Series split indicator (HISTORICAL_ACTUAL, VALIDATION_BACKTEST, FUTURE_FORECAST_30D)."
+          },
+          {
+            "name": "actual_atm_cash_demand_pkr",
+            "type": "number",
+            "description": "Observed network-wide ATM cash demand in PKR (null on future horizon if unrecorded)."
+          },
+          {
+            "name": "forecast_atm_cash_demand_pkr",
+            "type": "number",
+            "description": "SARIMAX + GBR ensemble predicted ATM cash demand in PKR."
+          },
+          {
+            "name": "forecast_atm_lower_95ci_pkr",
+            "type": "number",
+            "description": "Lower 95% confidence bound for ATM cash demand forecast in PKR."
+          },
+          {
+            "name": "forecast_atm_upper_95ci_pkr",
+            "type": "number",
+            "description": "Upper 95% confidence bound for ATM cash demand forecast in PKR."
+          },
+          {
+            "name": "actual_deposit_inflow_pkr",
+            "type": "number",
+            "description": "Observed daily deposit inflow in PKR."
+          },
+          {
+            "name": "forecast_deposit_inflow_pkr",
+            "type": "number",
+            "description": "Predicted daily deposit inflow in PKR."
+          },
+          {
+            "name": "is_salary_window",
+            "type": "integer",
+            "description": "Binary calendar indicator for salary disbursement window days (1/0)."
+          },
+          {
+            "name": "is_weekend",
+            "type": "integer",
+            "description": "Binary calendar indicator for weekend days (1/0)."
+          }
+        ]
+      }
+    },
+    {
+      "path": "FactExecutiveRecommendation.csv",
+      "description": "4 quantitative executive recommendations spanning treasury, branch network, CRM, and AML compliance.",
+      "schema": {
+        "fields": [
+          {
+            "name": "recommendation_id",
+            "type": "string",
+            "description": "Unique recommendation identifier (e.g., REC-ALCO-01)."
+          },
+          {
+            "name": "domain",
+            "type": "string",
+            "description": "Business domain (TREASURY_LIQUIDITY, BRANCH_NETWORK, RETAIL_CRM, AML_RISK)."
+          },
+          {
+            "name": "priority",
+            "type": "string",
+            "description": "Action urgency tier (CRITICAL, HIGH, MEDIUM)."
+          },
+          {
+            "name": "headline",
+            "type": "string",
+            "description": "Concise executive action headline."
+          },
+          {
+            "name": "quantified_evidence",
+            "type": "string",
+            "description": "Metric-backed statistical or ML evidence supporting the action."
+          },
+          {
+            "name": "recommended_action",
+            "type": "string",
+            "description": "Concrete operational step recommended to management."
+          },
+          {
+            "name": "expected_business_impact",
+            "type": "string",
+            "description": "Quantified operational or financial impact estimate."
+          }
+        ]
+      }
+    },
+    {
+      "path": "README.md",
+      "description": "Dataset documentation, relational schema overview, and benchmark use cases."
+    }
+  ]
+}
